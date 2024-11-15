@@ -40,26 +40,6 @@ export class User extends Service {
                         sameSite: 'Strict',
                     });
 
-                    Helper.CookieAPI.setCookie(
-                        Env.Cookie.project,
-                        String(project.id),
-                        14,
-                        {
-                            path: '/',
-                            sameSite: 'Strict',
-                        }
-                    );
-
-                    Helper.CookieAPI.setCookie(
-                        Env.Cookie.page,
-                        String(page.id),
-                        14,
-                        {
-                            path: '/',
-                            sameSite: 'Strict',
-                        }
-                    );
-
                     resolve({
                         status: response.status,
                         result: response.result,
@@ -107,41 +87,5 @@ export class User extends Service {
                 },
             });
         });
-    }
-
-    public async getProjects() {
-        const repository = new Repositories.User();
-
-        const response = await repository.getProjects();
-
-        return new Promise<Response<ServiceTypes.GenericList<Models.Project>>>(
-            (resolve, reject) => {
-                this.validateRequest({
-                    response: response,
-
-                    success: async (response) => {
-                        const projectDTOs = response.response.data.data;
-                        const projects = projectDTOs.map(DTOs.Project.toModel);
-
-                        resolve({
-                            status: response.status,
-                            result: response.result,
-                            data: {
-                                entities: this.getCacheObject(projects, 'id'),
-                                genericList: this.getIndexList(projects, 'id'),
-                            },
-                        });
-                    },
-
-                    error: (response) => {
-                        reject({
-                            status: response.status,
-                            result: response.result,
-                            data: response,
-                        });
-                    },
-                });
-            }
-        );
     }
 }
