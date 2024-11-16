@@ -5,6 +5,7 @@ import * as UserTemplatesStore from "./template";
 import { Helper } from "@/shared/helpers";
 import * as Services from "@/entities/services";
 import { useRouter } from "vue-router";
+import { router as Router } from "@/app/router/router";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -18,36 +19,30 @@ export const initActions = function (
     state.langToken.value = token;
   };
 
-  const addUser = async function () {
+  const addUser = async function (router: typeof Router) {
     const service = new Services.User();
 
-    const router = useRouter();
+    const response = await service.addUser(state.newUser.value);
 
-    const response = await service
-      .addUser(state.newUser.value)
-
-      .then((response) => {
-        state.userInfo.value = response.data.user;
-        restoreNewUser();
-        Helper.RouterAPI.redirect(router, "PAGE");
-      })
-      .catch((response) => {
-        console.log(response);
-      });
+    if (response.result) {
+      state.userInfo.value = response.data.user;
+      restoreNewUser();
+      Helper.RouterAPI.redirect(router, "PAGE");
+    } else {
+    }
   };
 
   const setUserInfo = async function () {
     const service = new Services.User();
     const router = useRouter();
 
-    service
-      .getUser()
-      .then((response) => {
-        state.userInfo.value = response.data;
-      })
-      .catch((response) => {
-        Helper.RouterAPI.redirect(router, "LOGIN");
-      });
+    const response = await service.getUser();
+
+    if (response.result) {
+      state.userInfo.value = response.data;
+    } else {
+      Helper.RouterAPI.redirect(router, "LOGIN");
+    }
   };
 
   const restoreNewUser = function () {

@@ -30,23 +30,25 @@ export class Service {
     );
   }
 
-  protected validateRequest<T, E>(payload: ServiceTypes.ValidatePayload<T, E>) {
-    try {
-      if (!payload.response.result) {
-        console.error(payload.response);
-        return payload.error(payload.response);
-      } else {
-        return payload.success(
-          payload.response as unknown as ARepositoryTypes.ResponseSuccessPayload<T>
-        );
-      }
-    } catch (err) {
-      console.error("Validation error:", err);
-      return payload.error({
-        status: 400,
-        result: false,
-        response: null,
-      });
+  protected handlerResponse<T, E, J>(
+    payload: ServiceTypes.ResponsePayload<T, E>,
+    success: (
+      response: ARepositoryTypes.ResponsePayloadSuccess<T>
+    ) => ARepositoryTypes.ParseResponsePayloadSuccess<J>
+  ) {
+    if (payload.result) {
+      return success(payload as ARepositoryTypes.ResponsePayloadSuccess<T>);
     }
+    return payload;
+  }
+
+  protected generateResponse<T>(
+    payload: ARepositoryTypes.ParseResponsePayloadSuccess<T>
+  ): ARepositoryTypes.ParseResponsePayloadSuccess<T> {
+    return {
+      data: payload.data,
+      result: payload.result,
+      status: payload.status,
+    };
   }
 }

@@ -72,22 +72,26 @@ type HEADERS = Partial<{
   "X-XSS-Protection": string;
 }>;
 
-export interface ResponsePayload<T> {
-  status: number;
-  result: boolean;
-  response: AxiosResponse<T, any> | null;
-}
-
-export type ResponsePayloadSuccess<T> = {
+export type DefaultResponsePayloadSuccess = {
   status: number;
   result: true;
-  response: AxiosResponse<ServerResponse<T>, any>;
 };
 
-export type ResponsePayloadError<T> = {
+export type DefaultResponsePayloadError = {
   status: number;
   result: false;
-  response: AxiosError<ServerResponse<T>, any> | null;
+};
+
+export type ResponsePayloadSuccess<T> = DefaultResponsePayloadSuccess & {
+  data: AxiosResponse<T, any>;
+};
+
+export type ParseResponsePayloadSuccess<T> = DefaultResponsePayloadSuccess & {
+  data: T;
+};
+
+export type ResponsePayloadError<T> = DefaultResponsePayloadError & {
+  data: AxiosError<ServerResponse<T>, any> | null;
 };
 
 export interface ResponseSuccessPayload<T> {

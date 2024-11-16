@@ -6,7 +6,6 @@ import * as DTOs from "@/entities/DTOs";
 import { Helper } from "@/shared/helpers";
 import type { UnwrapRef } from "vue";
 import { Env } from "@/shared/env";
-import * as ServiceTypes from "../Service/types";
 
 export class User extends Service {
   constructor() {
@@ -20,35 +19,24 @@ export class User extends Service {
 
     const response = await repository.addUser();
 
-    return this.validateRequest({
-      response: response,
+    return this.handlerResponse(response, (response) => {
+      console.log(response.data?.data);
+      const userDTO = response.data?.data.data.user;
 
-      success: async (response) => {
-        const userDTO = response.response.data.data.data.user;
+      const user = DTOs.UserAuth.toModel(userDTO);
 
-        const user = DTOs.UserAuth.toModel(userDTO);
+      const token = user.token;
 
-        const token = user.token;
+      Helper.CookieAPI.setCookie(Env.Cookie.token, token, 14, {
+        path: "/",
+        sameSite: "Strict",
+      });
 
-        Helper.CookieAPI.setCookie(Env.Cookie.token, token, 14, {
-          path: "/",
-          sameSite: "Strict",
-        });
-
-        return {
-          status: response.status,
-          result: response.result,
-          data: user,
-        };
-      },
-
-      error: (response) => {
-        return {
-          status: response.status,
-          result: response.result,
-          data: response,
-        };
-      },
+      return this.generateResponse({
+        status: response.status,
+        result: response.result,
+        data: user,
+      });
     });
   }
 
@@ -57,28 +45,14 @@ export class User extends Service {
 
     const response = await repository.getUser();
 
-    return new Promise<Response<Models.User>>((resolve, reject) => {
-      this.validateRequest({
-        response: response,
+    return this.handlerResponse(response, (response) => {
+      const userDTO = response.data.data;
+      const user = DTOs.User.toModel(userDTO);
 
-        success: async (response) => {
-          const userDTO = response.response.data.data;
-          const user = DTOs.User.toModel(userDTO);
-
-          resolve({
-            status: response.status,
-            result: response.result,
-            data: user,
-          });
-        },
-
-        error: (response) => {
-          reject({
-            status: response.status,
-            result: response.result,
-            data: response,
-          });
-        },
+      return this.generateResponse({
+        status: response.status,
+        result: response.result,
+        data: user,
       });
     });
   }

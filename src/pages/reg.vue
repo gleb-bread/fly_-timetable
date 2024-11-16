@@ -4,15 +4,18 @@ import { useUserStore } from "@/app/stores/user";
 import passwordField from "@/widgets/fields/outlined/passwordField.vue";
 import textField from "@/widgets/fields/outlined/textField.vue";
 import { Helper } from "@/shared/helpers";
+import { useRouter } from "vue-router";
 
 const userStore = useUserStore();
+
+const router = useRouter();
 
 const user = computed(() => userStore.state.getNewUser);
 
 const handlerRegistration = async function () {
   if (form.value) {
     const result = await form.value.validate();
-    if (result.valid) userStore.state.addUser();
+    if (result.valid) userStore.state.addUser(router);
   }
 };
 

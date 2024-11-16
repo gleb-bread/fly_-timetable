@@ -182,22 +182,11 @@ export class ARepository {
     return true;
   }
 
-  protected generateResponse<T>(payload: {
-    response?: AxiosResponse<T, any>;
-  }): RepositoryTypes.ResponsePayload<T> {
-    const result = {
-      response: payload.response ?? null,
-      ...this.getResultByStatusRequst(payload.response),
-    };
-
-    return result;
-  }
-
   protected generateResponseSuccess<T>(payload: {
     response?: AxiosResponse<RepositoryTypes.ServerResponse<T>, any>;
   }): RepositoryTypes.ResponsePayloadSuccess<T> {
     const result = {
-      response: payload.response ?? null,
+      data: payload.response ?? null,
       status: payload.response?.status ?? 200,
       result: true,
     } as RepositoryTypes.ResponsePayloadSuccess<T>;
@@ -209,40 +198,12 @@ export class ARepository {
     response?: AxiosError<T, any>;
   }): RepositoryTypes.ResponsePayloadError<T> {
     const result = {
-      response: payload.response ?? null,
+      data: payload.response ?? null,
       result: false,
       status: payload.response?.response?.status ?? 400,
     } as RepositoryTypes.ResponsePayloadError<T>;
 
     return result;
-  }
-
-  private getResultByStatusRequst(
-    response?: AxiosResponse<any, any> | AxiosError<any, any>
-  ) {
-    if (response instanceof AxiosError) {
-      const status = response?.response?.status ?? 400;
-
-      return {
-        status: status,
-        result: this.checkResultByStatus(status),
-      };
-    } else {
-      const status = response?.status ?? 400;
-
-      return {
-        status: status,
-        result: this.checkResultByStatus(status),
-      };
-    }
-  }
-
-  private checkResultByStatus(status: number) {
-    if (status != 200) {
-      return false;
-    } else {
-      return true;
-    }
   }
 
   protected get URL() {
