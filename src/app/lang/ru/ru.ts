@@ -5,7 +5,7 @@ export class LangRU {
 
   constructor() {
     this._WORDS = {
-      LOGO: "Diplim",
+      LOGO: "TIMETABLE",
       REG: {
         LOGIN: "Логин",
         PASSWORD: "Пароль",

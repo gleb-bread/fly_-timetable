@@ -1,1 +1,0 @@
-export { TextComponent } from './textComponent';

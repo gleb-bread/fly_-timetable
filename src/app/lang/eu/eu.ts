@@ -5,7 +5,7 @@ export class LangEU {
 
   constructor() {
     this._WORDS = {
-      LOGO: "Diplim",
+      LOGO: "TIMETABLE",
       REG: {
         LOGIN: "Login",
         PASSWORD: "Password",

@@ -1,14 +1,11 @@
-<script lang="ts" setup>
-import pageNavigation from './navigation/pageNavigation.vue';
-</script>
+<script lang="ts" setup></script>
 
 <template>
-    <v-responsive>
-        <v-app>
-            <page-navigation></page-navigation>
-            <v-main>
-                <slot name="main"></slot>
-            </v-main>
-        </v-app>
-    </v-responsive>
+  <v-responsive>
+    <v-app>
+      <v-main>
+        <slot name="main"></slot>
+      </v-main>
+    </v-app>
+  </v-responsive>
 </template>

@@ -1,7 +1,6 @@
-import * as DTOs from '@/entities/DTOs';
+import * as DTOs from "@/entities/DTOs";
+import * as Types from "@/shared/types";
 
-export type RegistrationDTO = {
-    user: DTOs.UserAuth.UserAuthDTO;
-    project: DTOs.Project.ProjectDTO;
-    page: DTOs.Page.PageDTO;
-};
+export type RegistrationDTO = Types.Response.Response<{
+  user: DTOs.UserAuth.UserAuthDTO;
+}>;

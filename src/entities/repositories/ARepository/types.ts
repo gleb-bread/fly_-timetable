@@ -81,14 +81,14 @@ export interface ResponsePayload<T> {
 export type ResponsePayloadSuccess<T> = {
   status: number;
   result: true;
-  response: AxiosResponse<ServerResponse<T>, any> | null;
-}
+  response: AxiosResponse<ServerResponse<T>, any>;
+};
 
 export type ResponsePayloadError<T> = {
   status: number;
   result: false;
   response: AxiosError<ServerResponse<T>, any> | null;
-}
+};
 
 export interface ResponseSuccessPayload<T> {
   status: number;
@@ -97,7 +97,7 @@ export interface ResponseSuccessPayload<T> {
 }
 
 export type ServerResponse<T = any> = {
-    "success": boolean,
-    "data": T,
-    "message"?: string
-}
+  success: boolean;
+  data: T;
+  message?: string;
+};

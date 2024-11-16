@@ -16,6 +16,7 @@ export const STYLE_VARIBLES = {
         TRANSPARENT_GREY: 'rgba(0,0,0,.1)',
         TRANSLUCENT_GREY: 'rgba(0,0,0,.6)',
         BLACK: 'rgba(0,0,0,.8)',
+        WHITE: 'white'
     },
     NAVIGATION: {
         DEFAULT_RAIL_WIDTH: 84,
