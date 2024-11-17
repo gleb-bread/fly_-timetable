@@ -25,7 +25,7 @@ export const initActions = function (
     const response = await service.addUser(state.newUser.value);
 
     if (response.result) {
-      state.userInfo.value = response.data.user;
+      state.userInfo.value = response.data;
       restoreNewUser();
       Helper.RouterAPI.redirect(router, "PAGE");
     } else {
@@ -49,5 +49,22 @@ export const initActions = function (
     state.newUser.value = UserTemplatesStore.newUser();
   };
 
-  return { setAuthToken, setLangToken, addUser, setUserInfo };
+  const restoreUserLogin = function () {
+    state.userLogin.value = UserTemplatesStore.UserLogin();
+  };
+
+  const UserLogin = async function (router: typeof Router) {
+    const service = new Services.User();
+
+    const response = await service.login(state.userLogin.value);
+
+    if (response.result) {
+      state.userInfo.value = response.data;
+      restoreUserLogin();
+      Helper.RouterAPI.redirect(router, "PAGE");
+    } else {
+    }
+  };
+
+  return { setAuthToken, setLangToken, addUser, setUserInfo, UserLogin };
 };

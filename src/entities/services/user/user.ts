@@ -20,12 +20,11 @@ export class User extends Service {
     const response = await repository.addUser();
 
     return this.handlerResponse(response, (response) => {
-      console.log(response.data?.data);
       const userDTO = response.data?.data.data.user;
 
-      const user = DTOs.UserAuth.toModel(userDTO);
+      const user = DTOs.User.toModel(userDTO);
 
-      const token = user.token;
+      const token = response.data?.data.data.token;
 
       Helper.CookieAPI.setCookie(Env.Cookie.token, token, 14, {
         path: "/",
@@ -48,6 +47,35 @@ export class User extends Service {
     return this.handlerResponse(response, (response) => {
       const userDTO = response.data.data;
       const user = DTOs.User.toModel(userDTO);
+
+      return this.generateResponse({
+        status: response.status,
+        result: response.result,
+        data: user,
+      });
+    });
+  }
+
+  public async login(login: Models.UserLogin | UnwrapRef<Models.UserLogin>) {
+    const repository = new Repositories.Login({
+      payload: login.getDTO(),
+    });
+
+    const response = await repository.login();
+
+    return this.handlerResponse(response, (response) => {
+      const userDTO = response.data?.data.data.user;
+
+      const user = DTOs.User.toModel(userDTO);
+
+      const token = response.data?.data.data.token;
+
+      console.log(Env.Cookie.token);
+
+      Helper.CookieAPI.setCookie(Env.Cookie.token, token, 14, {
+        path: "/",
+        sameSite: "Strict",
+      });
 
       return this.generateResponse({
         status: response.status,

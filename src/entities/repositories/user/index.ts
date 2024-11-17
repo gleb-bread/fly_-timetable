@@ -1,2 +1,2 @@
-export { Registration } from './API/reg';
-export { User } from './V1';
+export { User } from "./V1";
+export { Login, Registration } from "./API";

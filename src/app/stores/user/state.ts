@@ -8,6 +8,7 @@ export const initState = function () {
   const langToken = ref<Languages>("ru");
   const userInfo = ref<Models.User>({} as Models.User);
   const newUser = ref<Models.UserReg>(UserTemplatesStore.newUser());
+  const userLogin = ref<Models.UserLogin>(UserTemplatesStore.UserLogin());
 
-  return { authToken, langToken, userInfo, newUser };
+  return { authToken, langToken, userInfo, newUser, userLogin };
 };

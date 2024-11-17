@@ -9,3 +9,9 @@ export const newUser = () =>
     password: "",
     password_confirmation: "",
   });
+
+export const UserLogin = () =>
+  new Models.UserLogin({
+    email: "",
+    password: "",
+  });

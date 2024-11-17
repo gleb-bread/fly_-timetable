@@ -4,14 +4,14 @@ import { PREFIX } from "@/entities/repositories/prefix.enum";
 import * as Types from "@/shared/types";
 import * as Models from "@/entities/models";
 
-export class Registration extends Repositories.ARepository.ARepository {
+export class Login extends Repositories.ARepository.ARepository {
   constructor(
     config?: Repositories.ARepository.RepositoryTypes.RepositoryConfig
   ) {
-    super(`${PREFIX.API}/register`, config);
+    super(`${PREFIX.API}/login`, config);
   }
 
-  public async addUser() {
+  public async login() {
     return this.POST<ARepositoryTypes.ServerResponse<Types.Auth.UserAuth>>()
       .then((response) => {
         return this.generateResponseSuccess({

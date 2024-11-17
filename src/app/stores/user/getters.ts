@@ -6,6 +6,7 @@ export const initGetters = function (state: ReturnType<typeof initState>) {
   const getLangToken = computed(() => state.langToken.value);
   const getUserInfo = computed(() => state.userInfo.value);
   const getNewUser = computed(() => state.newUser.value);
+  const getUserLogin = computed(() => state.userLogin.value);
 
-  return { getAuthToken, getLangToken, getUserInfo, getNewUser };
+  return { getAuthToken, getLangToken, getUserInfo, getNewUser, getUserLogin };
 };
