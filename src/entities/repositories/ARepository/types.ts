@@ -1,5 +1,3 @@
-import { AxiosError, type AxiosResponse } from "axios";
-
 export type RepositoryConfig = {
   id?: number;
   payload?: any;
@@ -71,37 +69,3 @@ type HEADERS = Partial<{
   "X-Frame-Options": string;
   "X-XSS-Protection": string;
 }>;
-
-export type DefaultResponsePayloadSuccess = {
-  status: number;
-  result: true;
-};
-
-export type DefaultResponsePayloadError = {
-  status: number;
-  result: false;
-};
-
-export type ResponsePayloadSuccess<T> = DefaultResponsePayloadSuccess & {
-  data: AxiosResponse<T, any>;
-};
-
-export type ParseResponsePayloadSuccess<T> = DefaultResponsePayloadSuccess & {
-  data: T;
-};
-
-export type ResponsePayloadError<T> = DefaultResponsePayloadError & {
-  data: AxiosError<ServerResponse<T>, any> | null;
-};
-
-export interface ResponseSuccessPayload<T> {
-  status: number;
-  result: boolean;
-  response: AxiosResponse<ServerResponse<T>, any>;
-}
-
-export type ServerResponse<T = any> = {
-  success: boolean;
-  data: T;
-  message?: string;
-};

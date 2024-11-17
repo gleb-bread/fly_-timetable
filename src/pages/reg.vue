@@ -15,7 +15,10 @@ const user = computed(() => userStore.state.getNewUser);
 const handlerRegistration = async function () {
   if (form.value) {
     const result = await form.value.validate();
-    if (result.valid) userStore.state.addUser(router);
+    if (result.valid) {
+      await userStore.state.addUser(router);
+      await form.value.validate();
+    }
   }
 };
 
@@ -25,6 +28,7 @@ const login = computed({
   },
   set(value: string) {
     user.value.login = value;
+    delete userStore.components.getErrors.login;
   },
 });
 
@@ -43,6 +47,7 @@ const email = computed({
   },
   set(value: string) {
     user.value.email = value;
+    delete userStore.components.getErrors.email;
   },
 });
 
@@ -58,6 +63,14 @@ const repeatPassword = computed({
 const passwordEqualRule = computed(() => {
   const currectPassword = password.value;
   return Helper.RulesAPI.ruleEqualPasswords(currectPassword);
+});
+
+const LoginError = computed(() => {
+  return [() => userStore.components.getErrors.login ?? true];
+});
+
+const EmailError = computed(() => {
+  return [() => userStore.components.getErrors.email ?? true];
 });
 
 const form = ref<HTMLFormElement | null>(null);
@@ -86,7 +99,13 @@ const form = ref<HTMLFormElement | null>(null);
             <text-field
               :label="$WORDS.REG.LOGIN"
               v-model="login"
-              :rules="$HELPER.RulesAPI.ruleRequired()"
+              :rules="
+                $HELPER.RulesAPI.combineRules(
+                  $HELPER.RulesAPI.ruleRequired(),
+                  LoginError
+                )
+              "
+              class="mb-2"
               :prepend-icon="'mdi-account-outline'"
             >
             </text-field>
@@ -97,9 +116,11 @@ const form = ref<HTMLFormElement | null>(null);
               :rules="
                 $HELPER.RulesAPI.combineRules(
                   $HELPER.RulesAPI.ruleRequired(),
-                  $HELPER.RulesAPI.ruleEmail()
+                  $HELPER.RulesAPI.ruleEmail(),
+                  EmailError
                 )
               "
+              class="mb-2"
               :prepend-icon="'mdi-email-outline'"
             >
             </text-field>
@@ -112,6 +133,7 @@ const form = ref<HTMLFormElement | null>(null);
                   $HELPER.RulesAPI.ruleMinLength(8)
                 )
               "
+              class="mb-2"
               v-model="password"
             >
             </password-field>
@@ -124,6 +146,7 @@ const form = ref<HTMLFormElement | null>(null);
                   passwordEqualRule
                 )
               "
+              class="mb-2"
               v-model="repeatPassword"
             >
             </password-field>

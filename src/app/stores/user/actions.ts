@@ -6,6 +6,9 @@ import { Helper } from "@/shared/helpers";
 import * as Services from "@/entities/services";
 import { useRouter } from "vue-router";
 import { router as Router } from "@/app/router/router";
+import * as Types from "@/shared/types";
+import * as Models from "@/entities/models";
+import * as Errors from "@/shared/error";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -29,6 +32,13 @@ export const initActions = function (
       restoreNewUser();
       Helper.RouterAPI.redirect(router, "PAGE");
     } else {
+      const messages = new Errors.RequestError(
+        response
+      ).message<Models.UserReg>();
+
+      if (messages) {
+        stateComponents.errors.value = messages;
+      }
     }
   };
 

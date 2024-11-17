@@ -17,5 +17,5 @@ export type GenericList<T> = {
 };
 
 export type ResponsePayload<T, E> =
-  | ARepositoryTypes.ResponsePayloadSuccess<T>
-  | ARepositoryTypes.ResponsePayloadError<E>;
+  | Types.Response.ResponsePayloadSuccess<T>
+  | Types.Response.ResponsePayloadError<E>;

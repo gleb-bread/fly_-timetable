@@ -12,7 +12,7 @@ export class Login extends Repositories.ARepository.ARepository {
   }
 
   public async login() {
-    return this.POST<ARepositoryTypes.ServerResponse<Types.Auth.UserAuth>>()
+    return this.POST<Types.Response.ServerResponse<Types.Auth.UserAuth>>()
       .then((response) => {
         return this.generateResponseSuccess({
           response: response,

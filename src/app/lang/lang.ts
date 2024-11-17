@@ -17,16 +17,16 @@ export class Lang {
   public setLangToken(token: string) {
     const langToken = token as Languages;
     if (LanguagesList.includes(langToken))
-      this.userStore.setLangToken(langToken);
+      this.userStore.state.setLangToken(langToken);
   }
 
   private getLangFromToken(token: string) {
     this.setLangToken(token);
-    return this.userStore.getLangToken;
+    return this.userStore.state.getLangToken;
   }
 
   public get WORDS() {
-    switch (this.userStore.getLangToken) {
+    switch (this.userStore.state.getLangToken) {
       case "eu": {
         return this.langEU.WORDS;
       }

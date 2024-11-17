@@ -1,7 +1,6 @@
 import { Service } from "../Service";
 import * as Models from "@/entities/models";
 import * as Repositories from "@/entities/repositories";
-import type { Response } from "../Service/types";
 import * as DTOs from "@/entities/DTOs";
 import { Helper } from "@/shared/helpers";
 import type { UnwrapRef } from "vue";
@@ -69,8 +68,6 @@ export class User extends Service {
       const user = DTOs.User.toModel(userDTO);
 
       const token = response.data?.data.data.token;
-
-      console.log(Env.Cookie.token);
 
       Helper.CookieAPI.setCookie(Env.Cookie.token, token, 14, {
         path: "/",

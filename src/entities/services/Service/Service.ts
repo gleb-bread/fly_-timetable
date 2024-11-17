@@ -1,5 +1,5 @@
 import * as ServiceTypes from "./types";
-import * as ARepositoryTypes from "@/entities/repositories/ARepository/types";
+import * as Types from "@/shared/types";
 
 export class Service {
   protected getCacheObject<T, K extends keyof T>(array: T[], keyCache: K) {
@@ -33,18 +33,18 @@ export class Service {
   protected handlerResponse<T, E, J>(
     payload: ServiceTypes.ResponsePayload<T, E>,
     success: (
-      response: ARepositoryTypes.ResponsePayloadSuccess<T>
-    ) => ARepositoryTypes.ParseResponsePayloadSuccess<J>
+      response: Types.Response.ResponsePayloadSuccess<T>
+    ) => Types.Response.ParseResponsePayloadSuccess<J>
   ) {
     if (payload.result) {
-      return success(payload as ARepositoryTypes.ResponsePayloadSuccess<T>);
+      return success(payload as Types.Response.ResponsePayloadSuccess<T>);
     }
     return payload;
   }
 
   protected generateResponse<T>(
-    payload: ARepositoryTypes.ParseResponsePayloadSuccess<T>
-  ): ARepositoryTypes.ParseResponsePayloadSuccess<T> {
+    payload: Types.Response.ParseResponsePayloadSuccess<T>
+  ): Types.Response.ParseResponsePayloadSuccess<T> {
     return {
       data: payload.data,
       result: payload.result,

@@ -1,4 +1,4 @@
-export interface WORDS {
+export type WORDS = {
   LOGO: string;
   REG: {
     LOGIN: string;
@@ -21,5 +21,12 @@ export interface WORDS {
     NUM: string;
     ONLYSTRING: string;
     EMAIL: string;
-  }
-}
+  };
+  ERRORS: {
+    409: {
+      LOGIN: string;
+      EMAIL: string;
+    };
+    UNKNOWN: string;
+  };
+};

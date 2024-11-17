@@ -1,4 +1,5 @@
 import * as RepositoryTypes from "./types";
+import * as Types from "@/shared/types";
 import { AxiosError, type AxiosRequestConfig } from "axios";
 import { type AxiosResponse } from "axios";
 import * as ARepositoryTemplates from "./templates";
@@ -183,25 +184,25 @@ export class ARepository {
   }
 
   protected generateResponseSuccess<T>(payload: {
-    response?: AxiosResponse<RepositoryTypes.ServerResponse<T>, any>;
-  }): RepositoryTypes.ResponsePayloadSuccess<T> {
+    response?: AxiosResponse<Types.Response.ServerResponse<T>, any>;
+  }): Types.Response.ResponsePayloadSuccess<T> {
     const result = {
       data: payload.response ?? null,
       status: payload.response?.status ?? 200,
       result: true,
-    } as RepositoryTypes.ResponsePayloadSuccess<T>;
+    } as Types.Response.ResponsePayloadSuccess<T>;
 
     return result;
   }
 
   protected generateResponseError<T = any>(payload: {
     response?: AxiosError<T, any>;
-  }): RepositoryTypes.ResponsePayloadError<T> {
+  }): Types.Response.ResponsePayloadError<T> {
     const result = {
       data: payload.response ?? null,
       result: false,
       status: payload.response?.response?.status ?? 400,
-    } as RepositoryTypes.ResponsePayloadError<T>;
+    } as Types.Response.ResponsePayloadError<T>;
 
     return result;
   }

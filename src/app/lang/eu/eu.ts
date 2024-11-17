@@ -13,21 +13,28 @@ export class LangEU {
         TITLEREG: "Register",
         BTNLOGIN: "Log in",
         BTNREG: "Register",
-        'EMIAL': 'Email',
-        'PASSWORDAGAIN': 'Repeat the password',
+        EMIAL: "Email",
+        PASSWORDAGAIN: "Repeat the password",
         TITLEOR: "Or",
         BTNGOOGLE: "Log in using Google",
         TITLELINKREG: "Register",
         TITLELINKRESETPASSWORD: "Recover password",
       },
-      'RULES': {
-        'MINLENTH': (v: number) => this.MINLENGTHSTR(v),
-        'EMAIL': 'The field must contain an email',
-        'NUM': 'The field must contain only numbers',
-        'ONLYSTRING': 'The field must contain letters',
-        'PASSWORDSNOTEQUAL': 'Passwords do not match',
-        'REQUIRED': 'The field is required'
-      }
+      RULES: {
+        MINLENTH: (v: number) => this.MINLENGTHSTR(v),
+        EMAIL: "The field must contain an email",
+        NUM: "The field must contain only numbers",
+        ONLYSTRING: "The field must contain letters",
+        PASSWORDSNOTEQUAL: "Passwords do not match",
+        REQUIRED: "The field is required",
+      },
+      ERRORS: {
+        409: {
+          LOGIN: "This login is already taken",
+          EMAIL: "This email is already registered",
+        },
+        UNKNOWN: "Unknown error",
+      },
     };
   }
 
