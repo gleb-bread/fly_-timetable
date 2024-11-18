@@ -37,7 +37,7 @@ export const initActions = function (
       ).message<Models.UserReg>();
 
       if (messages) {
-        stateComponents.errors.value = messages;
+        stateComponents.errorsReg.value = messages;
       }
     }
   };
@@ -73,6 +73,13 @@ export const initActions = function (
       restoreUserLogin();
       Helper.RouterAPI.redirect(router, "PAGE");
     } else {
+      const messages = new Errors.RequestError(
+        response
+      ).message<Models.UserLogin>();
+
+      if (messages) {
+        stateComponents.errorsLogin.value = messages;
+      }
     }
   };
 

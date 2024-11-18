@@ -3,7 +3,8 @@ import * as Models from "@/entities/models";
 import * as Types from "@/shared/types";
 
 export const initStateComponents = function () {
-  const errors = ref<Types.Error.Component<Models.UserReg>>({});
+  const errorsReg = ref<Types.Error.Component<Models.UserReg>>({});
+  const errorsLogin = ref<Types.Error.Component<Models.UserLogin>>({});
 
-  return { errors };
+  return { errorsReg, errorsLogin };
 };

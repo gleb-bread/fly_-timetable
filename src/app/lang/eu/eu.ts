@@ -33,6 +33,13 @@ export class LangEU {
           LOGIN: "This login is already taken",
           EMAIL: "This email is already registered",
         },
+        422: {
+          EMAIL: "Invalid email",
+          PASSWORD: "Invalid password",
+        },
+        401: {
+          RESULT: "Invalid email or password",
+        },
         UNKNOWN: "Unknown error",
       },
     };

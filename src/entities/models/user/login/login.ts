@@ -4,6 +4,7 @@ import * as Models from "@/entities/models";
 export class UserLogin extends Models.Model<DTOs.UserLogin.UserLoginDTO> {
   private _email: string;
   private _password: string;
+  private _result: boolean = false;
 
   constructor(dto: DTOs.UserLogin.UserLoginDTO) {
     super();
@@ -32,5 +33,13 @@ export class UserLogin extends Models.Model<DTOs.UserLogin.UserLoginDTO> {
 
   public set password(v: string) {
     this._password = v;
+  }
+
+  public get result() {
+    return this._result;
+  }
+
+  public set result(v: boolean) {
+    this._result = v;
   }
 }

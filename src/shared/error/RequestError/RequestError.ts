@@ -28,14 +28,16 @@ export class RequestError<T extends object> {
       const key = <keyof T & RequestErrorTypes.OnlyStatusErrorWordsKeys>(
         v.toUpperCase()
       );
-      const status = <number>data[<keyof T>v];
+      let status = <number | number>data[<keyof T>v];
+      if (typeof status != "number") status = this._error.data?.status ?? 0;
+
       const messages = this.getWordsByStatus(status);
       if (typeof messages == "string") {
         result[<keyof J>v] = messages;
       } else {
-        result[<keyof J>v] = (<RequestErrorTypes.OnlyStatusErrorWordsField>(
-          messages
-        ))[key];
+        result[<keyof J>v] =
+          (<RequestErrorTypes.OnlyStatusErrorWordsField>messages)[key] ??
+          this._WORDS.UNKNOWN;
       }
     }
 

@@ -4,7 +4,8 @@ import { initStateComponents } from "./stateComponents";
 export const initGettersComponents = function (
   state: ReturnType<typeof initStateComponents>
 ) {
-  const getErrors = computed(() => state.errors.value);
+  const getErrorsReg = computed(() => state.errorsReg.value);
+  const getErrorsLogin = computed(() => state.errorsLogin.value);
 
-  return { getErrors };
+  return { getErrorsReg, getErrorsLogin };
 };

@@ -28,7 +28,7 @@ const login = computed({
   },
   set(value: string) {
     user.value.login = value;
-    delete userStore.components.getErrors.login;
+    delete userStore.components.getErrorsReg.login;
   },
 });
 
@@ -47,7 +47,7 @@ const email = computed({
   },
   set(value: string) {
     user.value.email = value;
-    delete userStore.components.getErrors.email;
+    delete userStore.components.getErrorsReg.email;
   },
 });
 
@@ -66,11 +66,11 @@ const passwordEqualRule = computed(() => {
 });
 
 const LoginError = computed(() => {
-  return [() => userStore.components.getErrors.login ?? true];
+  return [() => userStore.components.getErrorsReg.login ?? true];
 });
 
 const EmailError = computed(() => {
-  return [() => userStore.components.getErrors.email ?? true];
+  return [() => userStore.components.getErrorsReg.email ?? true];
 });
 
 const form = ref<HTMLFormElement | null>(null);

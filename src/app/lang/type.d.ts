@@ -27,6 +27,13 @@ export type WORDS = {
       LOGIN: string;
       EMAIL: string;
     };
+    422: {
+      EMAIL: string;
+      PASSWORD: string;
+    };
+    401: {
+      RESULT: string;
+    };
     UNKNOWN: string;
   };
 };
