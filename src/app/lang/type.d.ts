@@ -14,6 +14,12 @@ export type WORDS = {
     TITLELINKREG: string;
     TITLELINKRESETPASSWORD: string;
   };
+
+  FLIGHTS: {
+    FROM: string;
+    ARRIVAL: string;
+  };
+
   RULES: {
     REQUIRED: string;
     PASSWORDSNOTEQUAL: string;

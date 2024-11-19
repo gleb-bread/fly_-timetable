@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import { computed } from "vue";
+import flightContent from "@/widgets/flights/flightContent.vue";
 </script>
 
-<template>123</template>
+<template>
+  <flightContent />
+</template>

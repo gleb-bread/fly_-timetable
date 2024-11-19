@@ -28,6 +28,12 @@ export class LangEU {
         PASSWORDSNOTEQUAL: "Passwords do not match",
         REQUIRED: "The field is required",
       },
+
+      FLIGHTS: {
+        FROM: "From",
+        ARRIVAL: "Arrival",
+      },
+
       ERRORS: {
         409: {
           LOGIN: "This login is already taken",

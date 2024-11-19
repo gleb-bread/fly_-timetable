@@ -1,5 +1,5 @@
-import { Page } from './page';
+import { Flights } from "./flights";
 
 export const LoadingAPI = {
-    Page,
+  Flights,
 };

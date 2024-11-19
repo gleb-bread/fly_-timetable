@@ -4,6 +4,7 @@ import { RulesAPI } from "./rules";
 import { CookieAPI } from "./cookie";
 import { UrlAPI } from "./url";
 import { MessageAPI } from "./message";
+import { DateAPI } from "./date";
 
 export const Helper = {
   RouterAPI,
@@ -12,4 +13,5 @@ export const Helper = {
   CookieAPI,
   UrlAPI,
   MessageAPI,
+  DateAPI,
 };

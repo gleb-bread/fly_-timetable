@@ -28,6 +28,12 @@ export class LangRU {
         PASSWORDSNOTEQUAL: "Пароли не совпадают",
         REQUIRED: "Поле обязательно к заполнению",
       },
+
+      FLIGHTS: {
+        FROM: "Откуда",
+        ARRIVAL: "Куда",
+      },
+
       ERRORS: {
         409: {
           LOGIN: "Данный логин уже занят",
