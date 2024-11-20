@@ -76,7 +76,7 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
   }
 
   public get departure_time() {
-    return Helper.DateAPI.dateFormatWithTime(this._departure_time);
+    return Helper.DateAPI.formatDateTime(this._departure_time);
   }
 
   public set departure_time(v: string) {
@@ -84,7 +84,7 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
   }
 
   public get arrival_time() {
-    return Helper.DateAPI.dateFormatWithTime(this._arrival_time);
+    return Helper.DateAPI.formatDateTime(this._arrival_time);
   }
 
   public set arrival_time(v: string) {

@@ -12,11 +12,11 @@ const { getFlight } = initComputed();
   <td>
     <defaultTextWithLabel>
       <template #label> {{ $WORDS.FLIGHTS.ARRIVAL }}: </template>
-      {{ getFlight(props.itemId).arrival_time }}
+      {{ getFlight(props.itemId).destination }}
     </defaultTextWithLabel>
     <br />
     <default-text>
-      {{ getFlight(props.itemId).destination }}
+      {{ getFlight(props.itemId).arrival_time }}
     </default-text>
   </td>
 </template>
