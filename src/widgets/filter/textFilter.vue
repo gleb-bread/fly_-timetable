@@ -4,13 +4,16 @@ import type { TextFieldProps } from "./props";
 import { initComputed } from "./computed";
 import { computed } from "vue";
 
-const props = defineProps<TextFieldProps>();
+const props = withDefaults(defineProps<TextFieldProps>(), {
+  variant: "underlined",
+});
+
 const { getFilters, getLabel } = initComputed();
 const filterStore = useFilterStore();
 
 const getModelValue = computed({
   get() {
-    return String(getFilters.value[props.filterKey]);
+    return String(getFilters.value[props.filterKey] ?? "");
   },
 
   set(value: string) {
@@ -24,9 +27,11 @@ const getModelValue = computed({
 
 <template>
   <v-text-field
-    variant="underlined"
+    :variant="variant"
     density="compact"
     :label="getLabel(filterKey)"
+    :hide-details="true"
+    class="mb-2"
     v-model:model-value="getModelValue"
     no-resize
   >

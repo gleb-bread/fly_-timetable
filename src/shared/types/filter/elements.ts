@@ -1,11 +1,11 @@
 import * as Types from "@/shared/types";
 
-type DateFilterKeys = keyof Pick<
+export type DateFilterKeys = keyof Pick<
   Types.Filter.Filters,
   "arrival_time" | "departure_time" | "created_at" | "updated_at"
 >;
 
-type TextFilterKeys = keyof Pick<
+export type TextFilterKeys = keyof Pick<
   Types.Filter.Filters,
   "departure_from" | "destination" | "flight_number" | "q"
 >;
@@ -14,6 +14,15 @@ export type FilterElementNamesTypes = "date-field" | "text-field";
 
 export type FilterElementMixin<T extends FilterElementNamesTypes> =
   T extends "date-field" ? DateFilterKeys : TextFilterKeys;
+
+export type FieldElementProps = {
+  variant?:
+    | "outlined"
+    | "underlined"
+    | "solo"
+    | "solo-filled"
+    | "solo-inverted";
+};
 
 export type FilterTextItem = {
   component: "text-field";
@@ -30,4 +39,8 @@ export type FiltersItem<T extends FilterElementNamesTypes> = {
   filterKey: FilterElementMixin<T>;
 };
 
-export type FiltersList = Array<Array<FilterTextItem | FilterDateItem>>;
+export type FiltersList = Array<
+  Array<
+    (FilterTextItem & FieldElementProps) | (FilterDateItem & FieldElementProps)
+  >
+>;

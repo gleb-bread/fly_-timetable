@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { Helper } from "@/shared/helpers";
-import { ref, computed } from "vue";
+import { ref, computed, withDefaults } from "vue";
 import type { DateFieldProps } from "./props";
 import { initComputed } from "./computed";
 import { useFilterStore } from "@/app/stores/filter";
 
-const props = defineProps<DateFieldProps>();
+const props = withDefaults(defineProps<DateFieldProps>(), {
+  variant: "underlined",
+});
+
 const filterStore = useFilterStore();
 
 const { getFilters, getLabel } = initComputed();
@@ -53,10 +56,12 @@ const setDate = function (date: Date | string[]) {
         <v-text-field
           slot="activator"
           v-bind="props"
+          :hide-details="true"
+          class="mb-2"
           density="compact"
           :model-value="getViewDate"
           :label="getLabel(filterKey)"
-          variant="underlined"
+          :variant="variant"
           readonly
         >
         </v-text-field>
