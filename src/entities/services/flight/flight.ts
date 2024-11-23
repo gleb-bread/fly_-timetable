@@ -1,18 +1,19 @@
 import { Service } from "../Service";
-import * as Models from "@/entities/models";
+import * as Types from "@/shared/types";
 import * as Repositories from "@/entities/repositories";
 import * as DTOs from "@/entities/DTOs";
-import { Helper } from "@/shared/helpers";
-import type { UnwrapRef } from "vue";
-import { Env } from "@/shared/env";
 
 export class Flight extends Service {
   constructor() {
     super();
   }
 
-  public async getFlights() {
-    const repository = new Repositories.Flight();
+  public async getFlights(filters: Types.Filter.Filters | null = null) {
+    const repository = new Repositories.Flight({
+      payload: {
+        filter: filters,
+      },
+    });
 
     const response = await repository.getFlights();
 

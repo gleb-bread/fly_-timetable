@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<DateFieldProps>(), {
 
 const filterStore = useFilterStore();
 
-const { getFilters, getLabel } = initComputed();
+const { getFilters, getLabel, deleteFilter } = initComputed();
 
 const flagShowDatePicker = ref(false);
 
@@ -24,6 +24,7 @@ const getDate = computed(() => {
     ? Helper.DateAPI.getDateFromView(getViewDate.value)
     : new Date();
 });
+
 const setDate = function (date: Date | string[]) {
   let isDate = true;
   let dateFormat: null | Date = null;
@@ -64,6 +65,16 @@ const setDate = function (date: Date | string[]) {
           :variant="variant"
           readonly
         >
+          <template #append-inner>
+            <template v-if="!!getViewDate">
+              <VIcon
+                @click.stop="deleteFilter(filterKey)"
+                class="cursor-pointer"
+              >
+                mdi-close
+              </VIcon>
+            </template>
+          </template>
         </v-text-field>
       </template>
       <v-container>

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useSettingsStore } from "@/app/stores/settings";
 import { Helper } from "@/shared/helpers";
 import { onUnmounted } from "vue";
 

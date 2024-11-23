@@ -8,6 +8,8 @@ import { DateAPI } from "./date";
 import { ObserversAPI } from "./observers";
 import { ComponentsAPI } from "./components";
 import { RandomAPI } from "./random";
+import { CheckAPI } from "./check";
+import { FilterAPI } from "./filter";
 
 export const Helper = {
   RouterAPI,
@@ -20,4 +22,6 @@ export const Helper = {
   ObserversAPI,
   ComponentsAPI,
   RandomAPI,
+  CheckAPI,
+  FilterAPI,
 };

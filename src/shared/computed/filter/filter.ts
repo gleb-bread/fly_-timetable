@@ -23,10 +23,14 @@ export const initComputed = function () {
     filterKey: Types.FilterElement.TextFilterKeys,
     value: string
   ) {
-    filterStore.setFilter({
-      key: filterKey,
-      value: value,
-    });
+    if (!!value) {
+      filterStore.setFilter({
+        key: filterKey,
+        value: value,
+      });
+    } else {
+      filterStore.deleteFilter(filterKey);
+    }
   };
 
   return { getFilters, getLabel, getModelTextValue, setModelTextValue };

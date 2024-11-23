@@ -2,6 +2,7 @@ import * as Services from "@/entities/services";
 import { initActionsComponents } from "./actionsComponents";
 import { initStateComponents } from "./stateComponents";
 import { initState } from "./state";
+import { useFilterStore } from "../filter";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -11,8 +12,10 @@ export const initActions = function (
 
   const __init__ = async function () {
     const service = new Services.Flight();
+    const filterStore = useFilterStore();
+    const filters = filterStore.getFilters;
 
-    const response = await service.getFlights();
+    const response = await service.getFlights(filters);
 
     if (response.result) {
       state.flights.value = response.data.entities;
