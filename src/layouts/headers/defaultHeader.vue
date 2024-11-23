@@ -1,4 +1,12 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useSettingsStore } from "@/app/stores/settings";
+import { Helper } from "@/shared/helpers";
+import { onUnmounted } from "vue";
+
+const { handlerOnUnmounted } = Helper.ComponentsAPI.initHeightBlock(64);
+
+onUnmounted(() => handlerOnUnmounted());
+</script>
 
 <template>
   <v-app-bar

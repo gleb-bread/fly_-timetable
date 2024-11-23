@@ -5,6 +5,9 @@ import { CookieAPI } from "./cookie";
 import { UrlAPI } from "./url";
 import { MessageAPI } from "./message";
 import { DateAPI } from "./date";
+import { ObserversAPI } from "./observers";
+import { ComponentsAPI } from "./components";
+import { RandomAPI } from "./random";
 
 export const Helper = {
   RouterAPI,
@@ -14,4 +17,7 @@ export const Helper = {
   UrlAPI,
   MessageAPI,
   DateAPI,
+  ObserversAPI,
+  ComponentsAPI,
+  RandomAPI,
 };
