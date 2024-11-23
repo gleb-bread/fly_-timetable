@@ -48,6 +48,33 @@ export class LangEU {
         },
         UNKNOWN: "Unknown error",
       },
+
+      ERRORS_MESSAGES: {
+        UNKNOWN: "Unknown error",
+      },
+
+      FILTERS: {
+        ARRIVAL_TIME: "Arrival Time",
+        DEPARTURE_FROM: "Departure From",
+        DEPARTURE_TIME: "Departure Time",
+        DESTINATION: "Destination",
+        FLIGHT_NUMBER: "Flight Number",
+        FLIGHT_TYPE_ID: "Flight Type",
+        SEARCH: "Search",
+      },
+
+      COMMON: {
+        YES: "Yes",
+        NO: "No",
+        OK: "Ok",
+        CANCEL: "Cancel",
+        SAVE: "Save",
+        DELETE: "Delete",
+        CONFIRM: "Confirm",
+        CLOSE: "Close",
+        LOADING: "Loading",
+        ERROR: "Error",
+      },
     };
   }
 

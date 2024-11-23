@@ -5,10 +5,10 @@ import * as UserTemplatesStore from "./template";
 import { Helper } from "@/shared/helpers";
 import * as Services from "@/entities/services";
 import { useRouter } from "vue-router";
-import { router as Router } from "@/app/router/router";
-import * as Types from "@/shared/types";
+import { useMessageStore } from "../message";
 import * as Models from "@/entities/models";
 import * as Errors from "@/shared/error";
+import { Lang } from "@/app/lang";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -22,7 +22,7 @@ export const initActions = function (
     state.langToken.value = token;
   };
 
-  const addUser = async function (router: typeof Router) {
+  const addUser = async function () {
     const service = new Services.User();
 
     const response = await service.addUser(state.newUser.value);
@@ -30,7 +30,7 @@ export const initActions = function (
     if (response.result) {
       state.userInfo.value = response.data;
       restoreNewUser();
-      Helper.RouterAPI.redirect(router, "PAGE");
+      Helper.RouterAPI.redirect("PAGE");
     } else {
       const messages = new Errors.RequestError(
         response
@@ -50,8 +50,16 @@ export const initActions = function (
 
     if (response.result) {
       state.userInfo.value = response.data;
+    } else if (response.status === 401) {
+      Helper.RouterAPI.redirect("LOGIN");
     } else {
-      Helper.RouterAPI.redirect(router, "LOGIN");
+      const messageStore = useMessageStore();
+      const WORDS = new Lang().WORDS;
+
+      messageStore.addMessage({
+        result: false,
+        message: WORDS.ERRORS_MESSAGES.UNKNOWN,
+      });
     }
   };
 
@@ -63,7 +71,7 @@ export const initActions = function (
     state.userLogin.value = UserTemplatesStore.UserLogin();
   };
 
-  const UserLogin = async function (router: typeof Router) {
+  const UserLogin = async function () {
     const service = new Services.User();
 
     const response = await service.login(state.userLogin.value);
@@ -71,7 +79,7 @@ export const initActions = function (
     if (response.result) {
       state.userInfo.value = response.data;
       restoreUserLogin();
-      Helper.RouterAPI.redirect(router, "PAGE");
+      Helper.RouterAPI.redirect("PAGE");
     } else {
       const messages = new Errors.RequestError(
         response

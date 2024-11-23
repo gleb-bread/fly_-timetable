@@ -16,7 +16,7 @@ const handlerRegistration = async function () {
   if (form.value) {
     const result = await form.value.validate();
     if (result.valid) {
-      await userStore.state.addUser(router);
+      await userStore.state.addUser();
       await form.value.validate();
     }
   }
@@ -158,7 +158,7 @@ const form = ref<HTMLFormElement | null>(null);
               </default-btn>
               {{ $WORDS.REG.TITLEOR }}
               <outlined-btn
-                @click.stop="$HELPER.RouterAPI.redirect($router, 'LOGIN')"
+                @click.stop="$HELPER.RouterAPI.redirect('LOGIN')"
                 class="w-100"
               >
                 {{ $WORDS.REG.BTNLOGIN }}

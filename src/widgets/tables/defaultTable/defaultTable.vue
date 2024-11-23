@@ -8,11 +8,19 @@ const props = defineProps<Props<T, Y>>();
 const slots = defineSlots<Slots<T, Y>>();
 const settingsStore = useSettingsStore();
 
+const height = computed(() => {
+  if (props.scroll === undefined || props.scroll) {
+    return settingsStore.getMaxHeight;
+  } else {
+    return undefined;
+  }
+});
+
 const getHeight = computed(() => settingsStore.getMaxHeight);
 </script>
 
 <template>
-  <v-table class="timetable__bg__color__white" :height="getHeight">
+  <v-table class="timetable__bg__color__white" :height="height">
     <template v-if="props.headerItems">
       <thead>
         <tr>

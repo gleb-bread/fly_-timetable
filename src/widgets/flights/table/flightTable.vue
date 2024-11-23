@@ -10,7 +10,7 @@ const getGenericList = computed(() => flightStore.components.getGenericList);
 </script>
 
 <template>
-  <default-table :items="getGenericList">
+  <default-table :scroll="false" :items="getGenericList">
     <template #item="{ item }">
       <flightTableItem :item-id="item" />
     </template>

@@ -12,6 +12,7 @@ export class Lang {
     this.userStore = useUserStore();
     this.langRU = new LanguagesWords.LangRU();
     this.langEU = new LanguagesWords.LangEU();
+    return this;
   }
 
   public setLangToken(token: string) {

@@ -47,7 +47,7 @@ const ResultError = computed(() => {
 });
 
 const login = async function () {
-  await userStore.state.UserLogin(router);
+  await userStore.state.UserLogin();
   await form.value?.validate();
 };
 </script>
@@ -83,7 +83,7 @@ const login = async function () {
               }}</default-btn>
               {{ $WORDS.REG.TITLEOR }}
               <outlined-btn
-                @click.stop="$HELPER.RouterAPI.redirect($router, 'REG')"
+                @click.stop="$HELPER.RouterAPI.redirect('REG')"
                 class="w-100"
               >
                 {{ $WORDS.REG.BTNREG }}

@@ -48,6 +48,33 @@ export class LangRU {
         },
         UNKNOWN: "Неизвестная ошибка",
       },
+
+      ERRORS_MESSAGES: {
+        UNKNOWN: "Неизвестная ошибка",
+      },
+
+      FILTERS: {
+        ARRIVAL_TIME: "Время прибытия",
+        DEPARTURE_FROM: "Откуда вылет",
+        DEPARTURE_TIME: "Время вылета",
+        DESTINATION: "Куда вылет",
+        FLIGHT_NUMBER: "Номер рейса",
+        FLIGHT_TYPE_ID: "Тип полета",
+        SEARCH: "Поиск",
+      },
+
+      COMMON: {
+        YES: "Да",
+        NO: "Нет",
+        OK: "Ок",
+        CANCEL: "Отмена",
+        SAVE: "Сохранить",
+        DELETE: "Удалить",
+        CONFIRM: "Подтвердить",
+        CLOSE: "Закрыть",
+        LOADING: "Загрузка",
+        ERROR: "Ошибка",
+      },
     };
   }
 

@@ -42,4 +42,30 @@ export type WORDS = {
     };
     UNKNOWN: string;
   };
+  ERRORS_MESSAGES: {
+    UNKNOWN: string;
+  };
+
+  FILTERS: {
+    ARRIVAL_TIME: string;
+    DEPARTURE_FROM: string;
+    DEPARTURE_TIME: string;
+    DESTINATION: string;
+    FLIGHT_NUMBER: string;
+    FLIGHT_TYPE_ID: string;
+    SEARCH: string;
+  };
+
+  COMMON: {
+    YES: string;
+    NO: string;
+    OK: string;
+    CANCEL: string;
+    SAVE: string;
+    DELETE: string;
+    CONFIRM: string;
+    CLOSE: string;
+    LOADING: string;
+    ERROR: string;
+  };
 };
