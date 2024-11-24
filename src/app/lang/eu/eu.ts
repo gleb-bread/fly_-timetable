@@ -61,6 +61,8 @@ export class LangEU {
         FLIGHT_NUMBER: "Flight Number",
         FLIGHT_TYPE_ID: "Flight Type",
         SEARCH: "Search",
+        FROM: "From",
+        TILL: "Till",
       },
 
       COMMON: {
@@ -74,6 +76,7 @@ export class LangEU {
         CLOSE: "Close",
         LOADING: "Loading",
         ERROR: "Error",
+        APPLY: "Apply",
       },
     };
   }

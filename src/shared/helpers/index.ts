@@ -10,6 +10,7 @@ import { ComponentsAPI } from "./components";
 import { RandomAPI } from "./random";
 import { CheckAPI } from "./check";
 import { FilterAPI } from "./filter";
+import { FormaterAPI } from "./formater";
 
 export const Helper = {
   RouterAPI,
@@ -24,4 +25,5 @@ export const Helper = {
   RandomAPI,
   CheckAPI,
   FilterAPI,
+  FormaterAPI,
 };

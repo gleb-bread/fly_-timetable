@@ -5,4 +5,5 @@ export enum STORES {
   FLIGHT_TYPE_STORE = "flightTypeStore",
   SETTINGS_STORE = "settingsStore",
   FILTER_STORE = "filterStore",
+  CART_STORE = "cartStore",
 }

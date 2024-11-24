@@ -24,7 +24,7 @@ const activeFilters = function () {
       @click.stop="activeFilters"
       :density="'compact'"
       class="w-100"
-      text="Применить"
+      :text="$WORDS.COMMON.APPLY"
       color="primary"
     >
     </VBtn>

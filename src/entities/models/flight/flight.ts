@@ -10,7 +10,9 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
   private _flight_number: string;
   private _departure_time: string;
   private _arrival_time: string;
+  private _cart: Models.Cart[];
   private _created_at: string;
+  private _price: number;
   private _updated_at: string;
 
   constructor(dto: DTOs.Flight.FlightDTO) {
@@ -22,6 +24,8 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
     this._flight_number = dto.flight_number;
     this._departure_time = dto.departure_time;
     this._arrival_time = dto.arrival_time;
+    this._price = dto.price;
+    this._cart = dto.cart.map(DTOs.Cart.toModel);
     this._created_at = dto.created_at;
     this._updated_at = dto.updated_at;
   }
@@ -34,6 +38,8 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
       flight_number: this._flight_number,
       departure_time: this._departure_time,
       arrival_time: this._arrival_time,
+      price: this._price,
+      cart: this._cart.map((cart) => cart.getDTO()),
       created_at: this._created_at,
       updated_at: this._updated_at,
     };
@@ -97,5 +103,17 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
 
   public get updated_at() {
     return this._updated_at;
+  }
+
+  public get cart() {
+    return this._cart;
+  }
+
+  public set cart(v: Models.Cart[]) {
+    this._cart = v;
+  }
+
+  public get price() {
+    return this._price;
   }
 }

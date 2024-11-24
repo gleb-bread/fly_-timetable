@@ -53,21 +53,51 @@ export class ARepository {
     }
   }
 
-  protected async PATCH() {
-    const config = this.getConfig();
-    const data = this.getData();
-    return axios.patch(this.getUrl(), data, config);
+  protected async PATCH<T>() {
+    try {
+      const config = this.getConfig();
+      const data = this.getData();
+      const response = await axios.patch<T>(this.getUrl(), data, config);
+      return response;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw error;
+      } else {
+        console.log("unexpected error: ", error);
+        throw new Error("Unexpected error occurred");
+      }
+    }
   }
 
-  protected async PUT() {
-    const config = this.getConfig();
-    const data = this.getData();
-    return axios.put(this.getUrl(), data, config);
+  protected async PUT<T>() {
+    try {
+      const config = this.getConfig();
+      const data = this.getData();
+      const response = await axios.put<T>(this.getUrl(), data, config);
+      return response;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw error;
+      } else {
+        console.log("unexpected error: ", error);
+        throw new Error("Unexpected error occurred");
+      }
+    }
   }
 
-  protected async DELETE() {
-    const config = this.getConfigRequestGet();
-    return axios.delete(this.getUrl(), config);
+  protected async DELETE<T>() {
+    try {
+      const config = this.getConfigRequestGet();
+      const response = await axios.delete<T>(this.getUrl(), config);
+      return response;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw error;
+      } else {
+        console.log("unexpected error: ", error);
+        throw new Error("Unexpected error occurred");
+      }
+    }
   }
 
   private getUrl() {

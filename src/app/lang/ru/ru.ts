@@ -61,6 +61,8 @@ export class LangRU {
         FLIGHT_NUMBER: "Номер рейса",
         FLIGHT_TYPE_ID: "Тип полета",
         SEARCH: "Поиск",
+        FROM: 'С',
+        TILL: 'До'
       },
 
       COMMON: {
@@ -74,6 +76,7 @@ export class LangRU {
         CLOSE: "Закрыть",
         LOADING: "Загрузка",
         ERROR: "Ошибка",
+        APPLY: "Применить",
       },
     };
   }

@@ -9,6 +9,8 @@ export type FlightDTO = {
   flight_number: string;
   departure_time: string;
   arrival_time: string;
+  price: number;
+  cart: DTOs.Cart.CartDTO[];
   created_at: string;
   updated_at: string;
 };

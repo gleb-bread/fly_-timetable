@@ -34,13 +34,13 @@ const getHeight = computed(() => settingsStore.getMaxHeight);
     </template>
     <tbody>
       <template v-for="item in props.items">
-        <tr>
-          <slot name="item" :item="item">
+        <slot name="item" :item="item">
+          <tr>
             <template v-for="field in item">
               <td>{{ field }}</td>
             </template>
-          </slot>
-        </tr>
+          </tr>
+        </slot>
       </template>
     </tbody>
   </v-table>

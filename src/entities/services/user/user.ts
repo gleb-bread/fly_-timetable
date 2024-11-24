@@ -44,7 +44,7 @@ export class User extends Service {
     const response = await repository.getUser();
 
     return this.handlerResponse(response, (response) => {
-      const userDTO = response.data.data;
+      const userDTO = response.data.data.data;
       const user = DTOs.User.toModel(userDTO);
 
       return this.generateResponse({
@@ -68,6 +68,11 @@ export class User extends Service {
       const user = DTOs.User.toModel(userDTO);
 
       const token = response.data?.data.data.token;
+
+      console.log(Env.Cookie.token, token, 14, {
+        path: "/",
+        sameSite: "Strict",
+      });
 
       Helper.CookieAPI.setCookie(Env.Cookie.token, token, 14, {
         path: "/",

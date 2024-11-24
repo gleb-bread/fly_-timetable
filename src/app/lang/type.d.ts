@@ -54,6 +54,8 @@ export type WORDS = {
     FLIGHT_NUMBER: string;
     FLIGHT_TYPE_ID: string;
     SEARCH: string;
+    FROM: string;
+    TILL: string;
   };
 
   COMMON: {
@@ -67,5 +69,6 @@ export type WORDS = {
     CLOSE: string;
     LOADING: string;
     ERROR: string;
+    APPLY: string;
   };
 };

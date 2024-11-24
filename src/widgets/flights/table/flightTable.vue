@@ -12,7 +12,14 @@ const getGenericList = computed(() => flightStore.components.getGenericList);
 <template>
   <default-table :scroll="false" :items="getGenericList">
     <template #item="{ item }">
-      <flightTableItem :item-id="item" />
+      <v-hover>
+        <template #default="{ props, isHovering }">
+          <tr v-bind="props">
+            <flight-table-item :is-hovering="isHovering" :item-id="item">
+            </flight-table-item>
+          </tr>
+        </template>
+      </v-hover>
     </template>
   </default-table>
 </template>

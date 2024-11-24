@@ -11,7 +11,9 @@ export class User extends Repositories.ARepository.ARepositorySecurity {
   }
 
   public async getUser() {
-    return this.GET<Types.Response.ServerResponse<DTOs.User.UserDTO>>()
+    return this.GET<
+      Types.Response.ServerResponse<Types.Response.Response<DTOs.User.UserDTO>>
+    >()
       .then((response) => {
         return this.generateResponseSuccess({
           response: response,

@@ -3,6 +3,7 @@ import { initActionsComponents } from "./actionsComponents";
 import { initStateComponents } from "./stateComponents";
 import { initState } from "./state";
 import { useFilterStore } from "../filter";
+import * as Models from "@/entities/models";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -23,7 +24,16 @@ export const initActions = function (
     }
   };
 
+  const addCartInFlight = function (cart: Models.Cart) {
+    const flightId = cart.flight_id;
+
+    if (!state.flights.value[flightId]) return;
+
+    state.flights.value[flightId].cart.push(cart);
+  };
+
   return {
     __init__,
+    addCartInFlight,
   };
 };
