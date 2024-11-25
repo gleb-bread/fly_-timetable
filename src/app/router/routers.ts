@@ -10,8 +10,15 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: RoutersNames.PAGE,
     component: () => Components.page,
-    meta: { requiresAuth: true, layout: "page" },
+    meta: { requiresAuth: true },
     beforeEnter: LoadingAPI.Flights.__init__,
+  },
+  {
+    path: "/cart",
+    name: RoutersNames.CART,
+    component: () => Components.cart,
+    meta: { requiresAuth: true },
+    beforeEnter: LoadingAPI.Cart.__init__,
   },
   {
     path: "/reg",

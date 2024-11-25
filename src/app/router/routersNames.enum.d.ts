@@ -1,5 +1,6 @@
 export enum RoutersNames {
-    PAGE = 'Page',
-    REG = 'Registration',
-    LOGIN = 'Login',
+  PAGE = "Page",
+  REG = "Registration",
+  LOGIN = "Login",
+  CART = "Cart",
 }
