@@ -5,6 +5,9 @@ import { initState } from "./state";
 import { useFilterStore } from "../filter";
 import { useUserStore } from "../user";
 import { useFlightStore } from "../flights";
+import * as Models from "@/entities/models";
+import { Helper } from "@/shared/helpers";
+import { Lang } from "@/app/lang";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -44,8 +47,44 @@ export const initActions = function (
     }
   };
 
+  const update = async function (cart: Models.Cart) {
+    const WORDS = new Lang().WORDS;
+
+    const service = new Services.Cart();
+
+    const response = await service.update(cart);
+
+    if (!response.result) {
+      Helper.MessageAPI.addMessage({
+        result: false,
+        message: WORDS.ERRORS_MESSAGES.UNKNOWN,
+      });
+    }
+  };
+
+  const deleteCart = async function (cart: Models.Cart) {
+    const WORDS = new Lang().WORDS;
+
+    const service = new Services.Cart();
+
+    const response = await service.delete(cart);
+
+    if (response.result) {
+      delete state.carts.value[cart.id];
+      stateComponents.genericList.value =
+        stateComponents.genericList.value.filter((id) => id != cart.id);
+    } else {
+      Helper.MessageAPI.addMessage({
+        result: false,
+        message: WORDS.ERRORS_MESSAGES.UNKNOWN,
+      });
+    }
+  };
+
   return {
     __init__,
     create,
+    update,
+    deleteCart,
   };
 };

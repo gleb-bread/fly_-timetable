@@ -6,6 +6,7 @@ export class Cart extends Models.Model<DTOs.Cart.CartDTO> {
   private _user_id: number;
   private _flight_id: number;
   private _count: number;
+  private _flight?: Models.Flight;
   private _created_at: string;
   private _updated_at: string;
 
@@ -16,6 +17,7 @@ export class Cart extends Models.Model<DTOs.Cart.CartDTO> {
     this._user_id = dto.user_id;
     this._flight_id = dto.flight_id;
     this._count = dto.count;
+    this._flight = dto.flight ? new Models.Flight(dto.flight) : undefined;
     this._created_at = dto.created_at;
     this._updated_at = dto.updated_at;
   }
@@ -25,6 +27,7 @@ export class Cart extends Models.Model<DTOs.Cart.CartDTO> {
       user_id: this._user_id,
       flight_id: this._flight_id,
       count: this._count,
+      flight: this._flight?.getDTO(),
       created_at: this._created_at,
       updated_at: this._updated_at,
     };
@@ -64,5 +67,9 @@ export class Cart extends Models.Model<DTOs.Cart.CartDTO> {
 
   public get updated_at() {
     return this._updated_at;
+  }
+
+  public get flight() {
+    return this._flight;
   }
 }

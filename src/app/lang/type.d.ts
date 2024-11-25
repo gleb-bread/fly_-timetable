@@ -28,6 +28,19 @@ export type WORDS = {
     ONLYSTRING: string;
     EMAIL: string;
   };
+
+  CART: {
+    TITLE: {
+      TYPE: string;
+      FROM: string;
+      TO: string;
+      DEPARTURE_TIME: string;
+      PRICE: string;
+      COUNT: string;
+      TOTAL: string;
+    };
+  };
+
   ERRORS: {
     409: {
       LOGIN: string;

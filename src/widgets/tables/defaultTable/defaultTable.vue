@@ -2,6 +2,7 @@
 import type { Props } from "../props";
 import type { Slots } from "../slots";
 import { useSettingsStore } from "@/app/stores/settings";
+import { Colors } from "../colors";
 import { computed } from "vue";
 
 const props = defineProps<Props<T, Y>>();
@@ -16,17 +17,24 @@ const height = computed(() => {
   }
 });
 
-const getHeight = computed(() => settingsStore.getMaxHeight);
+const getBgColor = computed(() => Colors[props.bgColor ?? "white"]);
 </script>
 
 <template>
-  <v-table class="timetable__bg__color__white" :height="height">
+  <v-table
+    :density="'compact'"
+    :class="getBgColor"
+    class="timetable__table__collapse"
+    :height="height"
+  >
     <template v-if="props.headerItems">
       <thead>
         <tr>
           <template v-for="item in props.headerItems">
             <slot name="headerItem" :item="item">
-              <th>{{ item }}</th>
+              <th>
+                {{ item }}
+              </th>
             </slot>
           </template>
         </tr>
@@ -42,6 +50,7 @@ const getHeight = computed(() => settingsStore.getMaxHeight);
           </tr>
         </slot>
       </template>
+      <slot></slot>
     </tbody>
   </v-table>
 </template>

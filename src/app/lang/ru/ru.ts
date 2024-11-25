@@ -61,8 +61,20 @@ export class LangRU {
         FLIGHT_NUMBER: "Номер рейса",
         FLIGHT_TYPE_ID: "Тип полета",
         SEARCH: "Поиск",
-        FROM: 'С',
-        TILL: 'До'
+        FROM: "С",
+        TILL: "До",
+      },
+
+      CART: {
+        TITLE: {
+          TYPE: "Тип",
+          FROM: "Откуда",
+          TO: "Куда",
+          DEPARTURE_TIME: "Время вылета",
+          PRICE: "Цена",
+          COUNT: "Кол-во",
+          TOTAL: "Итого",
+        },
       },
 
       COMMON: {

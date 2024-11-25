@@ -65,6 +65,18 @@ export class LangEU {
         TILL: "Till",
       },
 
+      CART: {
+        TITLE: {
+          TYPE: "Type",
+          FROM: "From",
+          TO: "To",
+          DEPARTURE_TIME: "Departure time",
+          PRICE: "Price",
+          COUNT: "Quantity",
+          TOTAL: "Total",
+        },
+      },
+
       COMMON: {
         YES: "Yes",
         NO: "No",

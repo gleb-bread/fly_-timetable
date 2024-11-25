@@ -25,7 +25,7 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
     this._departure_time = dto.departure_time;
     this._arrival_time = dto.arrival_time;
     this._price = dto.price;
-    this._cart = dto.cart.map(DTOs.Cart.toModel);
+    this._cart = dto.cart?.map(DTOs.Cart.toModel) ?? [];
     this._created_at = dto.created_at;
     this._updated_at = dto.updated_at;
   }

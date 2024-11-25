@@ -7,6 +7,7 @@ export type CartDTO = {
   flight_id: number;
   count: number;
   created_at: string;
+  flight?: DTOs.Flight.FlightDTO;
   updated_at: string;
 };
 
