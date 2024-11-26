@@ -91,6 +91,10 @@ export class LangRU {
         ERROR: "Ошибка",
         APPLY: "Применить",
       },
+
+      APPLICATION: {
+        APPLICATION: "Заявка",
+      },
     };
   }
 

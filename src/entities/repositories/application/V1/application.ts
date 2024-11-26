@@ -14,7 +14,9 @@ export class Application extends Repositories.ARepository.ARepositorySecurity {
   public async getAll() {
     return this.GET<
       Types.Response.ServerResponse<
-        Types.Response.Response<DTOs.Application.ApplicationDTO[]>
+        Types.Response.Response<
+          Types.Objects.NumberObject<DTOs.Application.ApplicationDTO[]>
+        >
       >
     >()
       .then((response) => {
@@ -50,7 +52,7 @@ export class Application extends Repositories.ARepository.ARepositorySecurity {
   public async create() {
     return this.POST<
       Types.Response.ServerResponse<
-        Types.Response.Response<DTOs.Application.ApplicationDTO>
+        Types.Response.Response<DTOs.Application.ApplicationDTO[]>
       >
     >()
       .then((response) => {

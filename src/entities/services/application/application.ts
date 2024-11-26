@@ -2,6 +2,7 @@ import { Service } from "../Service";
 import * as Models from "@/entities/models";
 import * as Repositories from "@/entities/repositories";
 import * as DTOs from "@/entities/DTOs";
+import * as Types from "@/shared/types";
 import type { UnwrapRef } from "vue";
 
 export class Application extends Service {
@@ -16,14 +17,14 @@ export class Application extends Service {
 
     return this.handlerResponse(response, (response) => {
       const applicationDTOs = response.data.data.data;
-      const applications = applicationDTOs.map(DTOs.Application.toModel);
+      const applications = this.parseApplications(applicationDTOs);
 
       return this.generateResponse({
         status: response.status,
         result: response.result,
         data: {
-          entities: this.getCacheObject(applications, "id"),
-          genericList: this.getIndexList(applications, "id"),
+          entities: applications,
+          genericList: Object.keys(applications).map(Number),
         },
       });
     });
@@ -52,13 +53,13 @@ export class Application extends Service {
     const response = await repository.create();
 
     return this.handlerResponse(response, (response) => {
-      const applicationDTO = response.data.data.data;
-      const application = DTOs.Application.toModel(applicationDTO);
+      const applicationDTOs = response.data.data.data;
+      const applications = applicationDTOs.map(DTOs.Application.toModel);
 
       return this.generateResponse({
         status: response.status,
         result: response.result,
-        data: application,
+        data: applications,
       });
     });
   }
@@ -82,5 +83,19 @@ export class Application extends Service {
         data: application,
       });
     });
+  }
+
+  private parseApplications(
+    dtos: Types.Objects.NumberObject<DTOs.Application.ApplicationDTO[]>
+  ) {
+    let result: Types.Objects.NumberObject<Models.Application[]> = {};
+
+    Object.keys(dtos).forEach((key) => {
+      const id = Number(key);
+
+      result[id] = dtos[id].map(DTOs.Application.toModel);
+    });
+
+    return result;
   }
 }

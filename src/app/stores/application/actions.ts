@@ -3,8 +3,6 @@ import { initActionsComponents } from "./actionsComponents";
 import { initStateComponents } from "./stateComponents";
 import { initState } from "./state";
 import { useFilterStore } from "../filter";
-import { useUserStore } from "../user";
-import { useFlightStore } from "../flights";
 import * as Models from "@/entities/models";
 import { Helper } from "@/shared/helpers";
 import { Lang } from "@/app/lang";
@@ -18,8 +16,6 @@ export const initActions = function (
 
   const __init__ = async function () {
     const service = new Services.Application();
-    const filterStore = useFilterStore();
-    const filters = filterStore.getFilters;
 
     const response = await service.getAll();
 
@@ -39,8 +35,10 @@ export const initActions = function (
     const response = await service.create();
 
     if (response.result) {
-      state.applications.value[response.data.id] = response.data;
-      actionsComponents.pushInGenericList(response.data.id);
+      const orderId = response.data?.[0]?.order_id;
+      if (!orderId) return;
+      state.applications.value[orderId] = response.data;
+      actionsComponents.pushInGenericList(orderId);
       cartStore.store.setCarts([]);
       cartStore.components.setGenericList([]);
     } else {

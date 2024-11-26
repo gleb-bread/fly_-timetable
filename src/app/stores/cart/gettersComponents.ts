@@ -9,5 +9,9 @@ export const initGettersComponents = function (
     return state.genericList.value;
   });
 
-  return { getGenericList };
+  const getCount = computed(() => {
+    return state.genericList.value.length;
+  });
+
+  return { getGenericList, getCount };
 };

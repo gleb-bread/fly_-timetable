@@ -85,4 +85,8 @@ export type WORDS = {
     ERROR: string;
     APPLY: string;
   };
+
+  APPLICATION: {
+    APPLICATION: string;
+  };
 };

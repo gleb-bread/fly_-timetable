@@ -21,6 +21,13 @@ export const routes: Array<RouteRecordRaw> = [
     beforeEnter: LoadingAPI.Cart.__init__,
   },
   {
+    path: "/application",
+    name: RoutersNames.APPLICATION,
+    component: () => Components.application,
+    meta: { requiresAuth: true },
+    beforeEnter: LoadingAPI.Application.__init__,
+  },
+  {
     path: "/reg",
     name: RoutersNames.REG,
     component: () => Components.reg,

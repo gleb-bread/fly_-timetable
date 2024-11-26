@@ -91,6 +91,10 @@ export class LangEU {
         ERROR: "Error",
         APPLY: "Apply",
       },
+
+      APPLICATION: {
+        APPLICATION: "Order",
+      },
     };
   }
 

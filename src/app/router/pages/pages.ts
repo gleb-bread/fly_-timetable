@@ -4,5 +4,6 @@ export const initPages = function () {
     page: import("@/pages/page.vue"),
     login: import("@/pages/login.vue"),
     cart: import("@/pages/cart.vue"),
+    application: import("@/pages/application.vue"),
   };
 };
