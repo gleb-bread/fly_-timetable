@@ -10,7 +10,7 @@ const { getCart } = initComputed();
 const cart = computed(() => getCart.value(props.cartId));
 
 const getTotal = computed(() =>
-  String((cart.value.count ?? 0) * (cart.value.flight.price ?? 0))
+  String((cart.value.count ?? 0) * (cart.value?.flight?.price ?? 0))
 );
 </script>
 

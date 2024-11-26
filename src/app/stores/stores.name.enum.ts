@@ -6,4 +6,5 @@ export enum STORES {
   SETTINGS_STORE = "settingsStore",
   FILTER_STORE = "filterStore",
   CART_STORE = "cartStore",
+  APPLICATION_STORE = "applicationStore",
 }

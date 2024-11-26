@@ -21,7 +21,7 @@ const cart = computed(() => getCart.value(props.cartId));
     <defaultText>
       {{
         $HELPER.FormaterAPI.convertMoneyTypeWithoutRuble(
-          String(cart.flight.price ?? 0)
+          String(cart?.flight?.price ?? 0)
         )
       }}
     </defaultText>

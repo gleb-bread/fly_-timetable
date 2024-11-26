@@ -20,10 +20,10 @@ const getTotal = computed(() => {
 
 <template>
   <tr>
-    <td colspan="4">
+    <td colspan="4" class="border-0">
       <defaultText class="font-xl">{{ $WORDS.CART.TITLE.TOTAL }}</defaultText>
     </td>
-    <td colspan="3" class="text-end">
+    <td colspan="3" class="text-end border-0">
       <defaultText class="font-xl">{{ getTotal }}</defaultText>
     </td>
   </tr>

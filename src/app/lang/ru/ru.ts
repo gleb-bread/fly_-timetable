@@ -69,6 +69,7 @@ export class LangRU {
         TITLE: {
           TYPE: "Тип",
           FROM: "Откуда",
+          BUY: "Оплатить",
           TO: "Куда",
           DEPARTURE_TIME: "Время вылета",
           PRICE: "Цена",

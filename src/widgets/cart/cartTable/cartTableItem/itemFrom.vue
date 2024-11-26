@@ -12,7 +12,7 @@ const cart = computed(() => getCart.value(props.cartId));
 <template>
   <td>
     <defaultText>
-      {{ cart.flight.departure_from }}
+      {{ cart?.flight?.departure_from }}
     </defaultText>
   </td>
 </template>

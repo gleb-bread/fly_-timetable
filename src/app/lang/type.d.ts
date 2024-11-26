@@ -32,6 +32,7 @@ export type WORDS = {
   CART: {
     TITLE: {
       TYPE: string;
+      BUY: string;
       FROM: string;
       TO: string;
       DEPARTURE_TIME: string;

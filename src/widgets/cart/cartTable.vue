@@ -6,6 +6,7 @@ import cartTableItem from "./cartTable/cartTableItem.vue";
 import defaultText from "../text/defaultText.vue";
 import { Lang } from "@/app/lang";
 import cartTableTotal from "./cartTable/cartTableTotal.vue";
+import cartCreateApplication from "./cartTable/cartCreateApplication.vue";
 
 const WORDS = new Lang().WORDS;
 
@@ -67,5 +68,6 @@ const items = computed(() => cartStore.components.getGenericList);
     </template>
 
     <cartTableTotal />
+    <cartCreateApplication />
   </defaultTable>
 </template>

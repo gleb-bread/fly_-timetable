@@ -69,6 +69,7 @@ export class LangEU {
         TITLE: {
           TYPE: "Type",
           FROM: "From",
+          BUY: "Buy",
           TO: "To",
           DEPARTURE_TIME: "Departure time",
           PRICE: "Price",

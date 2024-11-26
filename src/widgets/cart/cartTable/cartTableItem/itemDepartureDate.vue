@@ -12,7 +12,7 @@ const cart = computed(() => getCart.value(props.cartId));
 <template>
   <td>
     <defaultText>
-      {{ $HELPER.DateAPI.dateFormat(cart.flight.departure_time) }}
+      {{ $HELPER.DateAPI.dateFormat(cart?.flight?.departure_time) }}
     </defaultText>
   </td>
 </template>

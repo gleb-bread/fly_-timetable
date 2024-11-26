@@ -8,6 +8,7 @@ import { useFlightStore } from "../flights";
 import * as Models from "@/entities/models";
 import { Helper } from "@/shared/helpers";
 import { Lang } from "@/app/lang";
+import { useCartStore } from "../cart";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -16,43 +17,46 @@ export const initActions = function (
   const actionsComponents = initActionsComponents(stateComponents);
 
   const __init__ = async function () {
-    const service = new Services.Cart();
+    const service = new Services.Application();
     const filterStore = useFilterStore();
     const filters = filterStore.getFilters;
 
     const response = await service.getAll();
 
     if (response.result) {
-      state.carts.value = response.data.entities;
+      state.applications.value = response.data.entities;
       actionsComponents.setGenericList(response.data.genericList);
     }
   };
 
-  const create = async function (flightId: number) {
-    const userStore = useUserStore();
-    const userId = userStore.state.getUserInfo.id;
-    const service = new Services.Cart();
-    const flightStore = useFlightStore();
+  const create = async function () {
+    const WORDS = new Lang().WORDS;
 
-    state.newCart.value.user_id = userId;
-    state.newCart.value.flight_id = flightId;
-    state.newCart.value.count = 1;
+    const cartStore = useCartStore();
 
-    const response = await service.create(state.newCart.value);
+    const service = new Services.Application();
+
+    const response = await service.create();
 
     if (response.result) {
-      state.carts.value[response.data.id] = response.data;
+      state.applications.value[response.data.id] = response.data;
       actionsComponents.pushInGenericList(response.data.id);
-      flightStore.store.addCartInFlight(response.data);
+      cartStore.store.setCarts([]);
+      cartStore.components.setGenericList([]);
+    } else {
+      Helper.MessageAPI.addMessage({
+        result: false,
+        message: WORDS.ERRORS_MESSAGES.UNKNOWN,
+      });
     }
   };
 
-  const update = async function (cart: Models.Cart) {
+  const update = async function (application: Models.Application) {
     const WORDS = new Lang().WORDS;
 
-    const service = new Services.Cart();
+    const service = new Services.Application();
 
-    const response = await service.update(cart);
+    const response = await service.update(application);
 
     if (!response.result) {
       Helper.MessageAPI.addMessage({
@@ -62,34 +66,9 @@ export const initActions = function (
     }
   };
 
-  const deleteCart = async function (cart: Models.Cart) {
-    const WORDS = new Lang().WORDS;
-
-    const service = new Services.Cart();
-
-    const response = await service.delete(cart);
-
-    if (response.result) {
-      delete state.carts.value[cart.id];
-      stateComponents.genericList.value =
-        stateComponents.genericList.value.filter((id) => id != cart.id);
-    } else {
-      Helper.MessageAPI.addMessage({
-        result: false,
-        message: WORDS.ERRORS_MESSAGES.UNKNOWN,
-      });
-    }
-  };
-
-  const setCarts = function (carts: Models.Cart[]) {
-    state.carts.value = carts;
-  };
-
   return {
     __init__,
     create,
     update,
-    deleteCart,
-    setCarts,
   };
 };
