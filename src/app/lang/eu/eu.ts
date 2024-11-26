@@ -95,6 +95,13 @@ export class LangEU {
       APPLICATION: {
         APPLICATION: "Order",
       },
+
+      MENU: {
+        USER: {
+          APPLICATION: "Orders",
+          ANALYTIC: "Analytic",
+        },
+      },
     };
   }
 

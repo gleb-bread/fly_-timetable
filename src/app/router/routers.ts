@@ -28,6 +28,13 @@ export const routes: Array<RouteRecordRaw> = [
     beforeEnter: LoadingAPI.Application.__init__,
   },
   {
+    path: "/analytic",
+    name: RoutersNames.ANALYTIC,
+    component: () => Components.analytic,
+    meta: { requiresAuth: true },
+    beforeEnter: LoadingAPI.Application.__init__,
+  },
+  {
     path: "/reg",
     name: RoutersNames.REG,
     component: () => Components.reg,

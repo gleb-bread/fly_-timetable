@@ -95,6 +95,13 @@ export class LangRU {
       APPLICATION: {
         APPLICATION: "Заявка",
       },
+
+      MENU: {
+        USER: {
+          APPLICATION: "Заказы",
+          ANALYTIC: "Аналитика",
+        },
+      },
     };
   }
 

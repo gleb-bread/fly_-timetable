@@ -86,6 +86,13 @@ export type WORDS = {
     APPLY: string;
   };
 
+  MENU: {
+    USER: {
+      APPLICATION: string;
+      ANALYTIC: string;
+    };
+  };
+
   APPLICATION: {
     APPLICATION: string;
   };
