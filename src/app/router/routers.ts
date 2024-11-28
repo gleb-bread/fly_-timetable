@@ -32,7 +32,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: RoutersNames.ANALYTIC,
     component: () => Components.analytic,
     meta: { requiresAuth: true },
-    beforeEnter: LoadingAPI.Application.__init__,
+    beforeEnter: LoadingAPI.Analytic.__init__,
   },
   {
     path: "/reg",

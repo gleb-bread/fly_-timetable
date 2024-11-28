@@ -102,6 +102,14 @@ export class LangRU {
           ANALYTIC: "Аналитика",
         },
       },
+
+      ANALYTIC: {
+        CHAR: "Круг",
+        AREA: "График",
+        MOUNTH: "Месяц",
+        YEAR: "Год",
+        DAY: "День",
+      },
     };
   }
 

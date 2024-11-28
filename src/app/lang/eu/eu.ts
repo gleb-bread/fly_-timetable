@@ -102,6 +102,14 @@ export class LangEU {
           ANALYTIC: "Analytic",
         },
       },
+
+      ANALYTIC: {
+        CHAR: "Pie",
+        AREA: "Area",
+        MOUNTH: "Mounth",
+        YEAR: "Yaer",
+        DAY: "Day",
+      },
     };
   }
 

@@ -96,4 +96,12 @@ export type WORDS = {
   APPLICATION: {
     APPLICATION: string;
   };
+
+  ANALYTIC: {
+    CHAR: string;
+    AREA: string;
+    MOUNTH: string;
+    YEAR: string;
+    DAY: string;
+  };
 };
