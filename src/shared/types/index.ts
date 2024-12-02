@@ -5,3 +5,5 @@ export { Auth } from "./auth";
 export { Messages } from "./message";
 export { Filter } from "./filter";
 export { FilterElement } from "./filter";
+export { Entity } from "./entity";
+export { Actions } from "./action";

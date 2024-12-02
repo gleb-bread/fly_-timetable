@@ -8,4 +8,5 @@ export enum STORES {
   CART_STORE = "cartStore",
   APPLICATION_STORE = "applicationStore",
   ANALYTIC_STORE = "analyticStore",
+  PERMISSIOIN_STORE = "permissionStore",
 }

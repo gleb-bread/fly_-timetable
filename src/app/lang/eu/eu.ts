@@ -100,6 +100,7 @@ export class LangEU {
         USER: {
           APPLICATION: "Orders",
           ANALYTIC: "Analytic",
+          ADMIN: "Admin panel",
         },
       },
 

@@ -90,6 +90,7 @@ export type WORDS = {
     USER: {
       APPLICATION: string;
       ANALYTIC: string;
+      ADMIN: string;
     };
   };
 

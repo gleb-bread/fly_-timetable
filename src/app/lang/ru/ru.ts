@@ -100,6 +100,7 @@ export class LangRU {
         USER: {
           APPLICATION: "Заказы",
           ANALYTIC: "Аналитика",
+          ADMIN: "Админ панель",
         },
       },
 
