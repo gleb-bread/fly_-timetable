@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { usePermissionStore } from "@/app/stores/permission";
+import { useUserStore } from "@/app/stores/user";
 
-const permissionStore = usePermissionStore();
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -26,7 +26,7 @@ const permissionStore = usePermissionStore();
         </v-list-item>
         <v-list-item
           @click="$HELPER.RouterAPI.redirect('ANALYTIC')"
-          v-if="permissionStore.hasPermissionByKeyAndAction('flight', 'update')"
+          v-if="userStore.state.getIsStuff"
           class="cursor-pointer us-none font-xs font-weight-medium"
           :density="'compact'"
         >

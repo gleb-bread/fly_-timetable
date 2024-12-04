@@ -4,17 +4,18 @@ import * as ARepositoryTypes from "@/entities/repositories/ARepository/types";
 import * as Types from "@/shared/types";
 import { PREFIX } from "@/entities/repositories/prefix.enum";
 
-export class Permission extends Repositories.ARepository.ARepositorySecurity {
+export class UserPermission extends Repositories.ARepository
+  .ARepositorySecurity {
   constructor(
     config?: Repositories.ARepository.RepositoryTypes.RepositoryConfig
   ) {
-    super(`${PREFIX.V1}/permissions`, config);
+    super(`${PREFIX.V1}/user/permissions`, config);
   }
 
   public async getAll() {
     return this.GET<
       Types.Response.ServerResponse<
-        Types.Response.Response<DTOs.Permisiion.DTO[]>
+        Types.Response.Response<DTOs.UserPermission.DTO[]>
       >
     >()
       .then((response) => {

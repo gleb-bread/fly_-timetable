@@ -91,5 +91,33 @@ export const initActions = function (
     }
   };
 
-  return { setAuthToken, setLangToken, addUser, setUserInfo, UserLogin };
+  const setPermissions = async function () {
+    const service = new Services.UserPermission();
+
+    const response = await service.getAll();
+
+    if (response.result) {
+      state.permissions.value = response.data;
+    }
+  };
+
+  const setIsStuff = async function () {
+    const service = new Services.UserIsStuff();
+
+    const response = await service.get();
+
+    if (response.result) {
+      state.isStuff.value = response.data;
+    }
+  };
+
+  return {
+    setAuthToken,
+    setLangToken,
+    addUser,
+    setUserInfo,
+    UserLogin,
+    setPermissions,
+    setIsStuff,
+  };
 };

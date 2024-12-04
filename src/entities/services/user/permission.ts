@@ -6,19 +6,19 @@ import * as DTOs from "@/entities/DTOs";
 import { Helper } from "@/shared/helpers";
 import type { UnwrapRef } from "vue";
 
-export class Permission extends Service {
+export class UserPermission extends Service {
   constructor() {
     super();
   }
 
   public async getAll() {
-    const repository = new Repositories.Permission();
+    const repository = new Repositories.UserPermission();
 
     const response = await repository.getAll();
 
     return this.handlerResponse(response, (response) => {
       const permissionDTOs = response.data.data.data;
-      const permissions = permissionDTOs.map(DTOs.Permisiion.toModel);
+      const permissions = permissionDTOs.map(DTOs.UserPermission.toModel);
 
       return this.generateResponse({
         status: response.status,
