@@ -35,6 +35,12 @@ export const routes: Array<RouteRecordRaw> = [
     beforeEnter: LoadingAPI.Analytic.__init__,
   },
   {
+    path: "/admin",
+    name: RoutersNames.ADMIN,
+    component: () => Components.admin,
+    meta: { requiresAuth: true, toolsMenu: true },
+  },
+  {
     path: "/reg",
     name: RoutersNames.REG,
     component: () => Components.reg,

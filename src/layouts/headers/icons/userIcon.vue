@@ -25,7 +25,7 @@ const userStore = useUserStore();
           {{ $WORDS.MENU.USER.APPLICATION }}
         </v-list-item>
         <v-list-item
-          @click="$HELPER.RouterAPI.redirect('ANALYTIC')"
+          @click="$HELPER.RouterAPI.redirect('ADMIN')"
           v-if="userStore.state.getIsStuff"
           class="cursor-pointer us-none font-xs font-weight-medium"
           :density="'compact'"

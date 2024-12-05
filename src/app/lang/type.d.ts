@@ -105,4 +105,15 @@ export type WORDS = {
     YEAR: string;
     DAY: string;
   };
+
+  TOOLMENU: {
+    CREATEFLIGHT: string;
+    UPDATEFLIGHT: string;
+    UPDATEUSER: string;
+    ANALYTIC: string;
+  };
+
+  ADMIN: {
+    DEFAULTPAGE: string;
+  };
 };

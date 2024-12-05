@@ -1,6 +1,6 @@
 export enum Actions {
   GET = "get",
-  GET_ALL = "getAll",
+  GETALL = "getAll",
   CREATE = "create",
   UPDATE = "update",
   DELETE = "delete",

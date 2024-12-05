@@ -111,6 +111,17 @@ export class LangRU {
         YEAR: "Год",
         DAY: "День",
       },
+
+      TOOLMENU: {
+        CREATEFLIGHT: "Добавить",
+        UPDATEFLIGHT: "Изменить",
+        UPDATEUSER: "Права",
+        ANALYTIC: "Аналитик",
+      },
+
+      ADMIN: {
+        DEFAULTPAGE: "Выберите пункт слева",
+      },
     };
   }
 

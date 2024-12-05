@@ -5,4 +5,5 @@ export enum RoutersNames {
   CART = "Cart",
   APPLICATION = "Application",
   ANALYTIC = "Analytic",
+  ADMIN = "Admin",
 }

@@ -6,5 +6,6 @@ export const initPages = function () {
     cart: import("@/pages/cart.vue"),
     application: import("@/pages/application.vue"),
     analytic: import("@/pages/analytic.vue"),
+    admin: import("@/pages/admin.vue"),
   };
 };

@@ -111,6 +111,17 @@ export class LangEU {
         YEAR: "Yaer",
         DAY: "Day",
       },
+
+      TOOLMENU: {
+        CREATEFLIGHT: "Add",
+        UPDATEFLIGHT: "Update",
+        UPDATEUSER: "Rights",
+        ANALYTIC: "Analytic",
+      },
+
+      ADMIN: {
+        DEFAULTPAGE: "Select the item on the left",
+      },
     };
   }
 
