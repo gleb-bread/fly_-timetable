@@ -28,13 +28,6 @@ export const routes: Array<RouteRecordRaw> = [
     beforeEnter: LoadingAPI.Application.__init__,
   },
   {
-    path: "/analytic",
-    name: RoutersNames.ANALYTIC,
-    component: () => Components.analytic,
-    meta: { requiresAuth: true },
-    beforeEnter: LoadingAPI.Analytic.__init__,
-  },
-  {
     path: "/admin",
     name: RoutersNames.ADMIN,
     component: () => Components.admin,

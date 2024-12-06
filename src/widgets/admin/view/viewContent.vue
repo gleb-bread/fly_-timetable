@@ -4,6 +4,7 @@ import { computed } from "vue";
 import type { ViewTypes } from "@/app/stores/admin/types";
 import * as ComponentTypes from "./type";
 import analytic from "./analytic.vue";
+import createView from "./createView.vue";
 import { Helper } from "@/shared/helpers";
 import defaultView from "./defaultView.vue";
 
@@ -28,6 +29,11 @@ const ViewList: ComponentTypes.WindowItem[] = [
   {
     value: "getAnalytic",
     component: analytic,
+    id: Helper.RandomAPI.generateUniqueId(40),
+  },
+  {
+    value: "createFlight",
+    component: createView,
     id: Helper.RandomAPI.generateUniqueId(40),
   },
 ];

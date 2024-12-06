@@ -5,5 +5,7 @@ import { computed } from "vue";
 export const initGetters = function (state: ReturnType<typeof initState>) {
   const getFlights = computed(() => state.flights.value);
 
-  return { getFlights };
+  const getNewFlight = computed(() => state.newFlight.value);
+
+  return { getFlights, getNewFlight };
 };
