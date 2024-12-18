@@ -22,6 +22,7 @@ export class LangEU {
       },
       RULES: {
         MINLENTH: (v: number) => this.MINLENGTHSTR(v),
+        MAXLENTH: (v: number) => this.MAXLENGTHSTR(v),
         EMAIL: "The field must contain an email",
         NUM: "The field must contain only numbers",
         ONLYSTRING: "The field must contain letters",
@@ -32,6 +33,17 @@ export class LangEU {
       FLIGHTS: {
         FROM: "From",
         ARRIVAL: "Arrival",
+        DEPARTURE_FROM: "Departure, from",
+        DEPARTURE_TIME: "Departure, time",
+        ARRIVAL_TO: "Arrival, to",
+        ARRIVAL_TIME: "Arrival, time",
+        FLIGHT_NAME: "Flight name",
+        PRICE: "Price",
+      },
+
+      MESSAGE: {
+        SUCCESS: "Success",
+        ERROR: "Error",
       },
 
       ERRORS: {
@@ -134,6 +146,14 @@ export class LangEU {
       return `Minimum length: ${v} character`;
     } else {
       return `Minimum length: ${v} characters`;
+    }
+  }
+
+  public MAXLENGTHSTR(v: number): string {
+    if (v === 1) {
+      return `Maximum length: ${v} character`;
+    } else {
+      return `Maximum length: ${v} characters`;
     }
   }
 }

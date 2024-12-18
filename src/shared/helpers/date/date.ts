@@ -314,3 +314,17 @@ export function formatDateTime(date: string | undefined | null): string {
 
   return `${day}.${month}.${year} 00:00`;
 }
+
+export const getDate = (v: string | number | null | undefined): Date | null => {
+  if (v === null || v === undefined) {
+    return null;
+  }
+
+  const date = new Date(v);
+
+  if (isNaN(date.getTime())) {
+    return null;
+  }
+
+  return date;
+};

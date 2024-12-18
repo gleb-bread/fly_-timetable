@@ -27,4 +27,22 @@ export class Flight extends Repositories.ARepository.ARepositorySecurity {
         });
       });
   }
+
+  public async create() {
+    return this.POST<
+      Types.Response.ServerResponse<
+        Types.Response.Response<DTOs.Flight.FlightDTO>
+      >
+    >()
+      .then((response) => {
+        return this.generateResponseSuccess({
+          response: response,
+        });
+      })
+      .catch((response) => {
+        return this.generateResponseError({
+          response: response,
+        });
+      });
+  }
 }

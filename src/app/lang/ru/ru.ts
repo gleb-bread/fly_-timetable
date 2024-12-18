@@ -22,6 +22,7 @@ export class LangRU {
       },
       RULES: {
         MINLENTH: (v: number) => this.MINLENGTHSTR(v),
+        MAXLENTH: (v: number) => this.MAXLENGTHSTR(v),
         EMAIL: "Поле должно содержать email",
         NUM: "Поле должно содержать только цифры",
         ONLYSTRING: "Поле должно содержать буквы",
@@ -32,6 +33,17 @@ export class LangRU {
       FLIGHTS: {
         FROM: "Откуда",
         ARRIVAL: "Куда",
+        DEPARTURE_FROM: "Вылет, откуда",
+        DEPARTURE_TIME: "Вылет, во сколько",
+        ARRIVAL_TO: "Прилет, куда",
+        ARRIVAL_TIME: "Прилет, во сколько",
+        FLIGHT_NAME: "Название рейса",
+        PRICE: "Цена",
+      },
+
+      MESSAGE: {
+        SUCCESS: "Успех",
+        ERROR: "Ошибка",
       },
 
       ERRORS: {
@@ -136,6 +148,16 @@ export class LangRU {
       return `Минимальная длина: ${v} символа`;
     } else {
       return `Минимальная длина: ${v} символов`;
+    }
+  }
+
+  public MAXLENGTHSTR(v: number): string {
+    if (v % 10 === 1 && v % 100 !== 11) {
+      return `Максимальная длина: ${v} символ`;
+    } else if (v % 10 >= 2 && v % 10 <= 4 && (v % 100 < 12 || v % 100 > 14)) {
+      return `Максимальная длина: ${v} символа`;
+    } else {
+      return `Максимальная длина: ${v} символов`;
     }
   }
 }

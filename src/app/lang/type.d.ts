@@ -18,12 +18,19 @@ export type WORDS = {
   FLIGHTS: {
     FROM: string;
     ARRIVAL: string;
+    DEPARTURE_FROM: string;
+    DEPARTURE_TIME: string;
+    ARRIVAL_TO: string;
+    ARRIVAL_TIME: string;
+    FLIGHT_NAME: string;
+    PRICE: string;
   };
 
   RULES: {
     REQUIRED: string;
     PASSWORDSNOTEQUAL: string;
     MINLENTH: Function;
+    MAXLENTH: Function;
     NUM: string;
     ONLYSTRING: string;
     EMAIL: string;
@@ -40,6 +47,11 @@ export type WORDS = {
       COUNT: string;
       TOTAL: string;
     };
+  };
+
+  MESSAGE: {
+    SUCCESS: string;
+    ERROR: string;
   };
 
   ERRORS: {

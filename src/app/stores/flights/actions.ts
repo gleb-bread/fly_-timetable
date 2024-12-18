@@ -3,7 +3,11 @@ import { initActionsComponents } from "./actionsComponents";
 import { initStateComponents } from "./stateComponents";
 import { initState } from "./state";
 import { useFilterStore } from "../filter";
+import { Helper } from "@/shared/helpers";
 import * as Models from "@/entities/models";
+import { Lang } from "@/app/lang";
+import * as StoreTemplates from "./template";
+import * as Errors from "@/shared/error";
 
 export const initActions = function (
   state: ReturnType<typeof initState>,
@@ -32,8 +36,30 @@ export const initActions = function (
     state.flights.value[flightId].cart.push(cart);
   };
 
+  const create = async function () {
+    const service = new Services.Flight();
+    const flight = state.newFlight.value;
+    const WORDS = new Lang().WORDS;
+
+    const response = await service.create(flight);
+
+    if (response.result) {
+      const newFlight = response.data;
+      state.flights.value[newFlight.id] = newFlight;
+      stateComponents.genericList.value.unshift(newFlight.id);
+      state.newFlight.value = StoreTemplates.createNewFlight();
+      Helper.MessageAPI.addMessage({
+        message: WORDS.MESSAGE.SUCCESS,
+        result: true,
+      });
+    } else {
+      new Errors.RequestError(response).message();
+    }
+  };
+
   return {
     __init__,
     addCartInFlight,
+    create,
   };
 };

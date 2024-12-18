@@ -2,6 +2,8 @@ import { Service } from "../Service";
 import * as Types from "@/shared/types";
 import * as Repositories from "@/entities/repositories";
 import * as DTOs from "@/entities/DTOs";
+import * as Models from "@/entities/models";
+import type { UnwrapRef } from "vue";
 
 export class Flight extends Service {
   constructor() {
@@ -28,6 +30,25 @@ export class Flight extends Service {
           entities: this.getCacheObject(flights, "id"),
           genericList: this.getIndexList(flights, "id"),
         },
+      });
+    });
+  }
+
+  public async create(flight: Models.Flight | UnwrapRef<Models.Flight>) {
+    const repository = new Repositories.Flight({
+      payload: flight.getDTO(),
+    });
+
+    const response = await repository.create();
+
+    return this.handlerResponse(response, (response) => {
+      const flightDTO = response.data.data.data;
+      const flight = DTOs.Flight.toModel(flightDTO);
+
+      return this.generateResponse({
+        status: response.status,
+        result: response.result,
+        data: flight,
       });
     });
   }

@@ -37,6 +37,13 @@ export const ruleMinLength = function (value: number) {
   );
 };
 
+export const ruleMaxLength = function (value: number) {
+  const WORDS = initWords();
+  return getRule((valueStr: string | null | undefined) =>
+    getString(valueStr).length > value ? WORDS.RULES.MINLENTH(value) : true
+  );
+};
+
 export const ruleEmail = function () {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const WORDS = initWords();

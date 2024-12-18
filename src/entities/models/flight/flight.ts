@@ -85,12 +85,20 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
     return Helper.DateAPI.formatDateTime(this._departure_time);
   }
 
+  public get departure_time_DB() {
+    return this._departure_time;
+  }
+
   public set departure_time(v: string) {
     this._departure_time = v;
   }
 
   public get arrival_time() {
     return Helper.DateAPI.formatDateTime(this._arrival_time);
+  }
+
+  public get arrival_time_DB() {
+    return this._arrival_time;
   }
 
   public set arrival_time(v: string) {
@@ -115,5 +123,9 @@ export class Flight extends Models.Model<DTOs.Flight.FlightDTO> {
 
   public get price() {
     return this._price;
+  }
+
+  public set price(v: number) {
+    this._price = v;
   }
 }
