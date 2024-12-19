@@ -102,6 +102,7 @@ export class LangRU {
         LOADING: "Загрузка",
         ERROR: "Ошибка",
         APPLY: "Применить",
+        LIST_EMPTY: "Список пуст",
       },
 
       APPLICATION: {

@@ -5,3 +5,10 @@ type Emit = {
 export type FieldEmits = Emit;
 
 export type DateEmits = Emit;
+
+export type SelectEmits<T = any, K extends keyof T = any> = {
+  (
+    e: "update:modelValue",
+    v: T extends Record<string | number, any> ? T[K] : T
+  ): void;
+};

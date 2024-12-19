@@ -45,4 +45,38 @@ export class Flight extends Repositories.ARepository.ARepositorySecurity {
         });
       });
   }
+
+  public async update() {
+    return this.PATCH<
+      Types.Response.ServerResponse<
+        Types.Response.Response<DTOs.Flight.FlightDTO>
+      >
+    >()
+      .then((response) => {
+        return this.generateResponseSuccess({
+          response: response,
+        });
+      })
+      .catch((response) => {
+        return this.generateResponseError({
+          response: response,
+        });
+      });
+  }
+
+  public async delete() {
+    return this.DELETE<
+      Types.Response.ServerResponse<Types.Response.Response<boolean>>
+    >()
+      .then((response) => {
+        return this.generateResponseSuccess({
+          response: response,
+        });
+      })
+      .catch((response) => {
+        return this.generateResponseError({
+          response: response,
+        });
+      });
+  }
 }

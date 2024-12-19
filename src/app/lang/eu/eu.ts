@@ -102,6 +102,7 @@ export class LangEU {
         LOADING: "Loading",
         ERROR: "Error",
         APPLY: "Apply",
+        LIST_EMPTY: "List empty",
       },
 
       APPLICATION: {

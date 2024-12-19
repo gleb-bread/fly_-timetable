@@ -57,9 +57,54 @@ export const initActions = function (
     }
   };
 
+  const update = async function (id: number) {
+    const service = new Services.Flight();
+    const flight = state.flights.value[id];
+
+    const response = await service.update(flight);
+
+    if (!response.result) {
+      new Errors.RequestError(response).message();
+    }
+  };
+
+  const Delete = async function (id: number) {
+    const service = new Services.Flight();
+    const flight = state.flights.value[id];
+    const WORDS = new Lang().WORDS;
+
+    const response = await service.delete(flight);
+
+    if (response.result) {
+      if (response.data) {
+        delete state.flights.value[flight.id];
+
+        const index = stateComponents.genericList.value.findIndex(
+          (item) => item === flight.id
+        );
+
+        stateComponents.genericList.value.splice(index, 1);
+
+        Helper.MessageAPI.addMessage({
+          message: WORDS.MESSAGE.SUCCESS,
+          result: true,
+        });
+      } else {
+        Helper.MessageAPI.addMessage({
+          message: WORDS.MESSAGE.ERROR,
+          result: false,
+        });
+      }
+    } else {
+      new Errors.RequestError(response).message();
+    }
+  };
+
   return {
     __init__,
     addCartInFlight,
     create,
+    update,
+    Delete,
   };
 };

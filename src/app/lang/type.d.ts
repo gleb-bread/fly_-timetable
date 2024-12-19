@@ -96,6 +96,7 @@ export type WORDS = {
     LOADING: string;
     ERROR: string;
     APPLY: string;
+    LIST_EMPTY: string;
   };
 
   MENU: {

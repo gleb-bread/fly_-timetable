@@ -52,4 +52,39 @@ export class Flight extends Service {
       });
     });
   }
+
+  public async update(flight: Models.Flight | UnwrapRef<Models.Flight>) {
+    const repository = new Repositories.Flight({
+      payload: flight.getDTO(),
+    });
+
+    const response = await repository.update();
+
+    return this.handlerResponse(response, (response) => {
+      const flightDTO = response.data.data.data;
+      const flight = DTOs.Flight.toModel(flightDTO);
+
+      return this.generateResponse({
+        status: response.status,
+        result: response.result,
+        data: flight,
+      });
+    });
+  }
+
+  public async delete(flight: Models.Flight | UnwrapRef<Models.Flight>) {
+    const repository = new Repositories.Flight({
+      payload: flight.getDTO(),
+    });
+
+    const response = await repository.delete();
+
+    return this.handlerResponse(response, (response) => {
+      return this.generateResponse({
+        status: response.status,
+        result: response.result,
+        data: response.data,
+      });
+    });
+  }
 }

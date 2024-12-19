@@ -7,6 +7,7 @@ import analytic from "./analytic.vue";
 import createView from "./createView.vue";
 import { Helper } from "@/shared/helpers";
 import defaultView from "./defaultView.vue";
+import updateFlight from "./updateFlight.vue";
 
 const adminStore = useAdminStore();
 
@@ -29,6 +30,11 @@ const ViewList: ComponentTypes.WindowItem[] = [
   {
     value: "getAnalytic",
     component: analytic,
+    id: Helper.RandomAPI.generateUniqueId(40),
+  },
+  {
+    value: "updateFlight",
+    component: updateFlight,
     id: Helper.RandomAPI.generateUniqueId(40),
   },
   {
