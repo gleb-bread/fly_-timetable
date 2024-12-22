@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useUserStore } from "@/app/stores/user";
+import { computed } from "vue";
 
 const userStore = useUserStore();
 </script>

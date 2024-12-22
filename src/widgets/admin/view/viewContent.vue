@@ -8,6 +8,7 @@ import createView from "./createView.vue";
 import { Helper } from "@/shared/helpers";
 import defaultView from "./defaultView.vue";
 import updateFlight from "./updateFlight.vue";
+import updateRole from "./updateRole.vue";
 
 const adminStore = useAdminStore();
 
@@ -35,6 +36,11 @@ const ViewList: ComponentTypes.WindowItem[] = [
   {
     value: "updateFlight",
     component: updateFlight,
+    id: Helper.RandomAPI.generateUniqueId(40),
+  },
+  {
+    value: "updateUser",
+    component: updateRole,
     id: Helper.RandomAPI.generateUniqueId(40),
   },
   {

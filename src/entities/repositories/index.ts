@@ -5,3 +5,6 @@ export { FlightType } from "./flightType";
 export { Cart } from "./cart";
 export { Application } from "./application";
 export { Analytic } from "./analytic";
+export { Users } from "./users";
+export { Role } from "./role";
+export { Roles } from "./roles";

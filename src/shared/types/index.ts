@@ -7,3 +7,4 @@ export { Filter } from "./filter";
 export { FilterElement } from "./filter";
 export { Entity } from "./entity";
 export { Actions } from "./action";
+export * as Roles from "./roles";

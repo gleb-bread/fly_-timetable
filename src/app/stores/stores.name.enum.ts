@@ -10,4 +10,7 @@ export enum STORES {
   ANALYTIC_STORE = "analyticStore",
   PERMISSIOIN_STORE = "permissionStore",
   ADMIN_STORE = "adminStore",
+  USERS_STORE = "usersStore",
+  ROLE_STORE = "roleStore",
+  ROLES_STORE = "rolesStore",
 }
